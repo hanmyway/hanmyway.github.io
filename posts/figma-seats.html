@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>누가 디자인의 배차권을 쥐는가 — Yohan Lee</title>
+<meta name="description" content="AI가 명세를 말에서 산출물로 옮겼다. 그래서 디자인 도구의 좌석 수요는 줄지 않고 늘었다. 생성 능력과 상태 소유를 구분해 읽는 글.">
+<meta property="og:title" content="누가 디자인의 배차권을 쥐는가">
+<meta property="og:description" content="생성은 기능이고, 상태는 자산이다.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23E4E7E3'/%3E%3Crect x='9' y='9' width='14' height='14' fill='%2314563F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@500;600&family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --concrete:#E4E7E3;--ink:#1B1F1D;--steel:#6E7873;
+    --line:#C9CEC8;--pine:#14563F;
+    --display:"Archivo","IBM Plex Sans KR",sans-serif;
+    --body:"Noto Serif KR",Georgia,serif;
+    --mono:"IBM Plex Mono",monospace;
+    --gutter:clamp(20px,5vw,64px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--concrete);color:var(--ink);
+    font-family:var(--body);font-size:17px;line-height:1.9;
+    letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:0 var(--gutter)}
+
+  .top{display:flex;justify-content:space-between;align-items:baseline;
+    padding:26px 0;border-bottom:1px solid var(--line);
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--steel)}
+  .top a{color:var(--ink);text-decoration:none;font-weight:500}
+  .top a:hover{color:var(--pine)}
+
+  .head{padding:clamp(48px,9vh,88px) 0 clamp(32px,5vh,48px)}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--pine);margin-bottom:24px}
+  h1{font-family:var(--display);font-weight:700;
+    font-size:clamp(1.9rem,5.6vw,3rem);line-height:1.08;
+    letter-spacing:-.03em}
+  .byline{font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--steel);margin-top:28px;
+    padding-top:20px;border-top:1px solid var(--line)}
+
+  article{padding-bottom:clamp(48px,8vh,80px)}
+  article p{margin:0 0 1.5em}
+  article h2{font-family:var(--display);font-weight:700;
+    font-size:clamp(1.2rem,3.2vw,1.55rem);line-height:1.3;
+    letter-spacing:-.02em;margin:2.6em 0 1em}
+  article strong{font-weight:500;box-shadow:inset 0 -.5em 0 rgba(20,86,63,.13)}
+  article code{font-family:var(--mono);font-size:.88em;
+    background:rgba(27,31,29,.06);padding:.1em .35em}
+
+  .lead{font-size:1.12rem;color:#2A312D}
+
+  blockquote{margin:2.4em 0;padding-left:24px;
+    border-left:2px solid var(--pine);
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(1.1rem,2.8vw,1.3rem);line-height:1.5;
+    letter-spacing:-.02em}
+
+  .end{border-top:1px solid var(--line);padding:36px 0 24px;
+    font-size:15px;color:var(--steel);line-height:1.8}
+  .out{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .out a{font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;text-decoration:none;color:var(--ink);
+    border:1px solid var(--steel);padding:13px 22px;
+    transition:background .2s,color .2s,border-color .2s}
+  .out a:hover,.out a:focus-visible{background:var(--pine);color:var(--concrete);border-color:var(--pine)}
+  :focus-visible{outline:2px solid var(--pine);outline-offset:3px}
+
+  footer{border-top:1px solid var(--line);padding:26px 0 48px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--steel)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <a href="../index.html">← Yohan Lee</a>
+    <span>Essay</span>
+  </div>
+
+  <header class="head">
+    <div class="kicker">Tools · Agents · Design systems</div>
+    <h1>누가 디자인의 배차권을 쥐는가</h1>
+    <div class="byline">2026년 8월 · 약 8분</div>
+  </header>
+
+  <article>
+    <p class="lead">클로드 디자인이 나왔을 때 타임라인의 반응은 익숙한 모양이었다. 피그마는 끝났다는 것.</p>
+
+    <p>같은 반응을 지난 몇 년간 여러 번 봤다. 그리고 대체로 틀렸다. 틀린 이유도 대체로 같았다. 도구가 만들어내는 <strong>산출물</strong>과, 도구가 붙들고 있는 <strong>상태</strong>를 구분하지 않았기 때문이다.</p>
+
+    <h2>생성은 기능이고, 상태는 자산이다</h2>
+    <p>피그마의 본질은 그림을 그리는 곳이 아니다. 지금 이 제품의 화면이 어떤 상태인지에 대한 조직의 유일한 정답이 놓이는 곳이다. 컴포넌트 라이브러리, 디자인 토큰, 버전 히스토리, 권한, 코멘트, 개발 핸드오프가 한 좌표에 모여 있다는 사실이 피그마다.</p>
+    <p>생성 능력은 빠르게 상품화된다. 이미 여러 곳에서 충분히 좋은 화면을 만들어낸다. 그러나 "우리 제품의 현재 정답"이라는 상태를 여러 사람이 동시에 편집하면서도 하나로 수렴시키는 일은, 모델 성능이 올라가는 것과 다른 종류의 문제다. 그건 조직의 합의 절차를 소프트웨어로 구현한 것이고, 한번 자리를 잡으면 교체 비용이 기능 비교로 계산되지 않는다.</p>
+
+    <h2>디테일은 명세되지 않는다</h2>
+    <p>프롬프트는 원하는 것을 이미 알고 있어야 작동한다.</p>
+    <p>그런데 디자인 작업의 대부분은 원하는 것을 알아내는 과정이다. 빈 상태 화면은 어떻게 보일지, 오류 문구는 몇 자까지 들어가는지, 이 여백이 8인지 12인지 — 이 결정들은 처음부터 존재하지 않는다. 실제 제약에 부딪히면서 발견된다. 제품의 품질이 사는 곳이 정확히 여기다.</p>
+    <p>그래서 AI는 명세할 수 있는 부분을 압축하고, 명세되지 않는 잔여물을 남긴다. 그 잔여물이 디자인 노동의 본체다. 수기(手記)가 남는 게 아니라, 수기만 남는다.</p>
+
+    <h2>좌석 수요는 줄지 않고 늘었다</h2>
+    <p>내가 실제로 본 것은 이 방향이었다. 범용 파운데이션 모델이 조직에 퍼지자, 디자인 도구의 기업 계정 수요는 줄지 않고 늘었다.</p>
+    <p>도구가 좋아져서가 아니다. <strong>명세가 이동했기 때문이다.</strong></p>
+    <p>이전에 디테일은 말로 전달됐다. 기획이 회의에서 의도와 세부를 구두로 설명하고, 개발이 그걸 받아 초안을 떠서 되돌려주는 구조. 이 구조에서 도구의 좌석은 역할이 정해줬다. 그림을 그리는 사람만 좌석을 가졌다.</p>
+    <p>그런데 리드타임 단축이 조직의 암묵적 합의가 되자 순서가 뒤집혔다. 기획이 AI와 대화해 프로토타입을 직접 뽑고 "이대로 만들어달라"고 넘기기 시작했다. 구두 설명이 산출물로 대체된 것이다. 동시에 디자인 조직은 컴포넌트 라이브러리를 만들어 그 산출물이 따라야 할 형식을 정형화했다.</p>
+    <p>결과적으로 대화의 단위가 말에서 산출물로 바뀌었다. 그리고 산출물로 말하려면, 산출물이 놓일 자리가 있어야 한다. 좌석은 여기서 늘어난다.</p>
+
+    <blockquote>AI는 직업의 경계를 흐렸고, 역할이 걸어두었던 좌석 수요의 상한을 걷어냈다. 도구를 대체할 것으로 기대됐던 기술이, 도구의 사용자 수를 늘린 셈이다.</blockquote>
+
+    <p>경쟁은 이제 디테일과 엣지에서 벌어진다. 그런데 디테일과 엣지를 놓고 다투려면, 서로가 같은 화면을 보고 있어야 한다.</p>
+
+    <h2>생산이 압축되면 합의가 병목이 된다</h2>
+    <p>디자인이 끝나는 시점은 예쁘게 보이는 순간이 아니다. 기획과 개발과 브랜드와 법무가 모두 동의한 순간이다. 생산에 걸리는 시간이 줄어들면, 전체 소요 시간에서 이 합의 과정이 차지하는 비중은 <strong>커진다</strong>.</p>
+    <p>즉 AI는 피그마의 기능을 대체하는 방향이 아니라, 피그마가 실제로 담당하던 기능을 전체 공정의 병목으로 끌어올리는 방향으로 작동한다. 나는 이 구조를 물류에서 반복해서 본다. 가장 늦게 디지털화되는 층이 가장 큰 기회인 이유는, 그 층에 이미 거래량이 존재하기 때문이다. 합의는 늦게 디지털화된 층이고, 거래량은 이미 거기 있다.</p>
+
+    <h2>누가 배차권을 쥐는가</h2>
+    <p>자율주행을 보면서 나는 이렇게 정리했다. 기술 기업이 만든 것은 드라이버다. 그 드라이버가 뛸 시장에서 수요를 누구에게 배분할지 결정하는 권리는 별개의 자산이다. 그리고 최종 수익 배분은 후자가 결정한다.</p>
+    <p>디자인 도구도 같은 구조로 읽힌다. 클로드 디자인이 만든 것은 디자이너다. 그 디자이너가 만든 결과물이 조직의 정답으로 승인되어 들어가는 좌표를 누가 쥐고 있는지는 별개의 문제다.</p>
+    <p>능력을 만드는 쪽과 그 능력이 배분되는 판을 쥐는 쪽은 다르다.</p>
+    <p>조직 안에서도 같은 층위가 생긴다. 누구나 생성할 수 있게 되면, 무엇을 생성할 수 있는지를 정하는 컴포넌트 라이브러리가 통제 지점이 된다. 디자인 조직의 일이 화면을 만드는 것에서 라이브러리를 관장하는 것으로 옮겨가는 이유다. 생성이 민주화될수록 표준을 쥔 쪽의 권한은 커진다.</p>
+    <p>이건 디자인 도구만의 이야기가 아니다.</p>
+
+    <h2>피그마는 이미 그 자리를 지키러 움직였다</h2>
+    <p>여기서 흥미로운 건, 이 시나리오를 피그마가 이미 알고 있다는 점이다.</p>
+    <p>2026년 2월, 피그마는 클로드 코드와의 양방향 연동을 열었다. 디자인에서 코드로 나가는 방향만이 아니라, 브라우저에서 실행 중인 UI를 붙잡아 피그마 캔버스의 레이어로 돌려놓는 방향까지. 에이전트가 피그마를 읽는 경로가 아니라, 에이전트가 피그마 안으로 써 넣는 경로를 피그마가 직접 만든 것이다.</p>
+    <p>Code Connect도 같은 방향이다. 피그마 컴포넌트를 실제 코드베이스의 컴포넌트에 매핑해두면, 에이전트는 새 버튼을 매번 새로 그리는 대신 그 팀이 이미 쓰는 버튼을 불러온다. 피그마 문서 자체가 이 기능을 두고, 이게 없으면 모델은 추측할 수밖에 없다고 쓴다.</p>
+    <p>MCP 서버는 데스크톱 전용에서 벗어나 IDE와 에이전트, 브라우저 모델에서 접근 가능해졌고, 6월 Config에서는 MCP로 연결된 디자인 에이전트를 캔버스 위로 올리는 방향이 예고됐다.</p>
+    <p>그런데 이 중에서 가장 눈여겨볼 것은 기능이 아니다. 피그마가 서드파티 MCP 클라이언트를 사용자 데이터에 접근시키기 전에 검토를 거치게 한 대목, 그리고 어떤 에이전트에게 어느 저장소와 어느 프로젝트를 열어줄지를 팀 거버넌스의 문제로 다루라는 권고다.</p>
+    <p>어떤 에이전트가 조직의 원본에 접근할 수 있는지를 심사하는 권한. 그게 배차권이다.</p>
+
+    <h2>반대편 사실도 봐야 한다</h2>
+    <p>이 논지가 편해지려면 클로드 디자인이 상태를 전혀 안 쥔다고 해야 한다. 그런데 그렇지 않다.</p>
+    <p>클로드 디자인은 온보딩에서 코드베이스와 디자인 파일을 읽어 팀의 디자인 시스템을 만들고, 이후 작업에 그 색과 타이포와 컴포넌트를 자동 적용한다. 시스템을 다듬을 수도 있고 팀이 여럿을 유지할 수도 있다. 상태가 없는 도구가 아니다.</p>
+    <p>차이는 양이 아니라 종류다. 클로드 디자인이 쥔 디자인 시스템은 생성을 제약하는 <strong>입력</strong>이다. 피그마가 쥔 것은 여러 사람이 동시에 고치고, 이력이 남고, 그 자리에 코멘트가 붙고, 그대로 개발로 넘어가는 <strong>다자간 기록</strong>이다. 앞의 것은 좋은 결과물을 만들기 위한 재료고, 뒤의 것은 조직이 무엇에 합의했는지를 증명하는 문서다.</p>
+    <p>앤트로픽 스스로도 이 제품을 피그마 대체가 아니라 보완이라고 말한다. <code>.fig</code> 내보내기는 없고, 캔바로 넘기는 경로를 붙였다. 리서치 프리뷰 단계이기도 하다.</p>
+    <p>경쟁 구도로 읽으면 이 사실들이 안 보인다. 층위로 읽으면 보인다.</p>
+
+    <h2>그러니 봐야 할 지표</h2>
+    <p>클로드 디자인의 완성도는 지표가 아니다. 그건 올라간다. 봐야 할 것은 세 가지다.</p>
+    <p>조직들이 디자인 시스템의 원본을 어디에 두는지. 에이전트가 만든 결과가 최종적으로 어디에 커밋되는지. 그리고 그 접근을 누가 심사하는지.</p>
+    <p>숫자로 확인하려면 피그마의 신규 고객 수가 아니라 기존 기업 계정 내 좌석 확장을 보면 된다. 이 논지가 맞으면 계정당 좌석 수와 순매출유지율이 올라간다. 신규 로고가 아니라 확장이 성장을 끌어야 한다.</p>
+    <p>이 셋이 계속 피그마를 향한다면, 생성 도구가 몇 개 더 나오는 일은 피그마에게 위협이 아니라 유입이다. 반대로 에이전트들이 피그마를 우회해 각자의 좌표에 결과를 쌓기 시작한다면, 그때 피그마는 사람이 확인하러 잠깐 들르는 뷰어가 된다. 상태 자산이 기능으로 강등되는 순간이다.</p>
+    <p>능력을 만드는 쪽과 그 능력이 배분되는 판을 쥐는 쪽은 다르다. 지금까지는 피그마가 후자를 놓지 않으려 정확하게 움직이고 있다.</p>
+  </article>
+
+  <div class="end">
+    본문의 제품 기능과 일정은 2026년 8월 기준으로 확인한 내용입니다. 조직 관찰 부분은 특정 기업의 내부 정보를 포함하지 않으며, 모든 견해는 개인 의견으로 소속 기관의 입장과 무관합니다.
+    <div class="out">
+      <a href="../index.html">다른 글 보기</a>
+      <a href="https://www.linkedin.com/in/yohan86" rel="me">LinkedIn</a>
+    </div>
+  </div>
+
+  <footer>© 2026 Yohan Lee</footer>
+
+</div>
+</body>
+</html>
