@@ -96,6 +96,10 @@
     .item{grid-template-columns:150px 1fr}
     .item .meta{grid-row:span 2}
   }
+  .item .t a{color:inherit;text-decoration:none;
+    border-bottom:1px solid var(--line);padding-bottom:1px;
+    transition:color .2s,border-color .2s}
+  .item .t a:hover,.item .t a:focus-visible{color:var(--pine);border-color:var(--pine)}
   .soon .t{color:var(--steel)}
 
   /* ---- contact ---- */
@@ -176,6 +180,12 @@
   <section class="sec">
     <div class="sec-label">서재 / Library</div>
     <div class="shelf">
+
+      <div class="item">
+        <div class="meta">2026.08 · Essay</div>
+        <div class="t"><a href="posts/figma-seats.html">누가 디자인의 배차권을 쥐는가</a></div>
+        <div class="d">AI가 명세를 말에서 산출물로 옮겼다. 그래서 디자인 도구의 좌석 수요는 줄지 않고 늘었다.</div>
+      </div>
 
       <div class="item soon">
         <div class="meta">준비 중 · Essay</div>
