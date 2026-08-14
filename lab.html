@@ -82,6 +82,146 @@
   :focus-visible{outline:2px solid var(--pine);outline-offset:3px}
 
   /* ---------- dispatch game ---------- */
+  .verd{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;
+    text-transform:uppercase;border:1px solid currentColor;padding:3px 8px;margin-left:10px;
+    vertical-align:3px}
+  .verd.ok{color:var(--pine)} .verd.part{color:var(--gold)} .verd.no{color:var(--alert)}
+  .ag{border-top:1px solid var(--line);padding-top:34px;margin-top:44px}
+  .ag>h3{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,3vw,1.5rem);
+    letter-spacing:-.02em;line-height:1.28;text-wrap:balance}
+  .hyp{font-size:14.5px;line-height:1.75;margin-top:12px;color:#2A312D;max-width:42em}
+  .hyp b{font-weight:500;box-shadow:inset 0 -.5em 0 rgba(20,86,63,.13)}
+  .pr{border:1px solid var(--line);margin-top:22px}
+  .pr>.q{font-family:var(--mono);font-size:12.5px;line-height:1.8;padding:14px 16px;
+    background:rgba(255,255,255,.42);border-bottom:1px solid var(--line);letter-spacing:.01em}
+  .pr>.q i{font-style:normal;color:var(--pine);font-weight:600;margin-right:8px}
+  .ans{display:grid;gap:1px;background:var(--line)}
+  @media(min-width:780px){.ans{grid-template-columns:1fr 1fr}}
+  .an{background:var(--concrete);padding:14px 16px}
+  .an .m{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--steel);display:block;margin-bottom:9px}
+  .an .hl{font-size:15px;line-height:1.6;font-weight:500;font-family:var(--display);
+    letter-spacing:-.01em}
+  .an .hl.warm{color:var(--pine)} .an .hl.cool{color:var(--alert)}
+  .an details{margin-top:11px;border:none;padding-top:0}
+  .an details summary{font-size:10px}
+  .an details p{font-size:13.5px;line-height:1.8;margin-top:10px;color:#2A312D}
+  .an details ul{margin:8px 0 0 0;padding-left:16px;font-size:13.5px;line-height:1.8;color:#2A312D}
+  .read{border-left:2px solid var(--pine);padding:14px 18px;margin-top:22px;
+    background:rgba(20,86,63,.07)}
+  .read h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--pine);font-weight:500}
+  .read p{font-size:14.5px;line-height:1.8;margin-top:9px}
+  .read p+p{margin-top:9px}
+  .read b{font-weight:500;box-shadow:inset 0 -.5em 0 rgba(20,86,63,.16)}
+  .frame{border:1px solid var(--steel);padding:16px 18px;margin-top:26px}
+  .frame h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--steel);font-weight:500}
+  .frame p{font-size:14.5px;line-height:1.75;margin-top:8px}
+  .frame p+p{margin-top:6px;color:var(--steel);font-size:13.5px}
+  .turnbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:24px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0}
+  .turnbar .tn{font-family:var(--mono);font-size:11.5px;color:var(--steel);letter-spacing:.02em}
+  .turnbar .tn b{color:var(--ink);font-family:var(--display);font-size:14px}
+  .lv{margin-top:30px}
+  .lv h5{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--pine);font-weight:500}
+  .lv .sub2{font-family:var(--mono);font-size:11px;color:var(--steel);
+    margin-top:5px;line-height:1.7;letter-spacing:.01em}
+  .lines{display:grid;gap:8px;margin-top:14px}
+  @media(min-width:760px){.lines{grid-template-columns:1fr 1fr}}
+  .ln{font-family:var(--mono);font-size:12px;letter-spacing:.01em;cursor:pointer;
+    border:1px solid var(--line);background:rgba(255,255,255,.4);color:var(--steel);
+    padding:12px 14px;text-align:left;touch-action:manipulation;transition:all .15s;
+    line-height:1.6;display:flex;justify-content:space-between;gap:10px;align-items:center}
+  .ln:hover{border-color:var(--pine);color:var(--ink)}
+  .ln em{font-style:normal;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;
+    white-space:nowrap;border:1px solid currentColor;padding:2px 6px}
+  .ln[data-s="1"]{background:rgba(20,86,63,.12);border-color:var(--pine);color:var(--ink)}
+  .ln[data-s="2"]{background:rgba(176,132,40,.15);border-color:var(--gold);color:var(--ink)}
+  .ln:disabled{opacity:.35;cursor:default}
+  .cands{border-top:1px solid var(--line);margin-top:14px}
+  .cd{display:grid;gap:5px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .cd .t{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .cd .n{font-size:14.5px}
+  .cd .p{font-family:var(--display);font-weight:700;font-size:13px;
+    font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .cd .g{height:6px;background:var(--line)}
+  .cd .g i{display:block;height:100%;background:var(--steel);transition:width .25s ease}
+  .cd.hi .g i{background:var(--pine)} .cd.hi .p{color:var(--pine)}
+  .cd.fresh{animation:pop .5s ease}
+  @keyframes pop{from{background:rgba(20,86,63,.2)}to{background:transparent}}
+  .bg{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;padding:1px 5px;
+    border:1px solid currentColor;margin-left:6px;white-space:nowrap}
+  .bg.src{color:var(--pine)} .bg.no{color:var(--alert)} .bg.doc{color:var(--gold)}
+  .sent{display:grid;gap:6px;margin-top:18px}
+  .sent div{font-size:14.5px;line-height:1.6;padding:9px 12px;
+    border-left:2px solid var(--line);background:rgba(255,255,255,.3)}
+  .sent div.k{border-left-color:var(--pine);background:rgba(20,86,63,.1)}
+  .sent div.bad{border-left-color:var(--alert)}
+  .sent .no{border:none;background:none;color:var(--steel);font-family:var(--mono);font-size:12px}
+  .runbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:26px}
+  .prompt{border:1px solid var(--line);background:rgba(255,255,255,.45);
+    padding:16px 18px;margin-top:16px;font-family:var(--mono);font-size:13px;
+    line-height:2;letter-spacing:.01em;white-space:pre-wrap}
+  .prompt .base{color:var(--ink)}
+  .prompt .add{color:var(--pine)}
+  .prompt .add.neg{color:var(--alert)}
+  .lines{display:grid;gap:8px;margin-top:16px}
+  @media(min-width:720px){.lines{grid-template-columns:1fr 1fr}}
+  .ln{font-family:var(--mono);font-size:12px;letter-spacing:.01em;cursor:pointer;
+    border:1px solid var(--line);background:rgba(255,255,255,.4);color:var(--steel);
+    padding:12px 14px;text-align:left;touch-action:manipulation;transition:all .15s;line-height:1.6}
+  .ln:hover{border-color:var(--pine);color:var(--ink)}
+  .ln[aria-pressed="true"]{background:rgba(20,86,63,.14);border-color:var(--pine);color:var(--ink)}
+  .ln[aria-pressed="true"]:before{content:"+ ";color:var(--pine);font-weight:600}
+  .ln:before{content:"  "}
+  .runbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:24px}
+  .sent{display:grid;gap:6px;margin-top:18px}
+  .sent div{font-size:14.5px;line-height:1.6;padding:9px 12px;
+    border-left:2px solid var(--line);background:rgba(255,255,255,.3)}
+  .sent div.k{border-left-color:var(--pine);background:rgba(20,86,63,.1)}
+  .sent .no{border:none;background:none;color:var(--steel);font-family:var(--mono);font-size:12px}
+  details{margin-top:30px;border-top:1px solid var(--line);padding-top:18px}
+  details summary{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--steel);cursor:pointer;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details summary:before{content:"▸ ";color:var(--pine)}
+  details[open] summary:before{content:"▾ "}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .chip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;cursor:pointer;
+    border:1px solid var(--line);background:rgba(255,255,255,.4);color:var(--steel);
+    padding:10px 14px;touch-action:manipulation;transition:all .15s}
+  .chip:hover{border-color:var(--pine);color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:var(--concrete)}
+  .chip:disabled{opacity:.35;cursor:default}
+  .gen{border-top:1px solid var(--line);margin-top:34px;padding-top:24px}
+  .samples{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;min-height:2em}
+  .samples span{font-family:var(--mono);font-size:11.5px;letter-spacing:.01em;
+    border:1px solid var(--line);padding:7px 11px;color:var(--steel)}
+  .samples span.k{border-color:var(--pine);color:var(--pine)}
+  .mission{border:1px solid var(--pine);padding:16px 18px;margin-top:24px;
+    background:rgba(20,86,63,.07)}
+  .mission h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--pine);font-weight:500}
+  .mission p{font-size:14.5px;line-height:1.75;margin-top:8px}
+  .mission .st{font-family:var(--mono);font-size:11.5px;color:var(--steel);
+    margin-top:10px;display:block;letter-spacing:.02em}
+  .mission.done{border-color:var(--steel);background:rgba(255,255,255,.35)}
+  .mission.done h4{color:var(--steel)}
+  .areas{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:22px}
+  @media(min-width:640px){.areas{grid-template-columns:repeat(3,1fr)}}
+  .area{background:var(--concrete);padding:15px 16px;cursor:pointer;text-align:left;
+    border:none;font:inherit;color:inherit;touch-action:manipulation;transition:background .15s}
+  .area:hover{background:rgba(20,86,63,.07)}
+  .area[aria-pressed="true"]{background:rgba(20,86,63,.16)}
+  .area b{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:-.01em;display:block}
+  .area .m{font-family:var(--mono);font-size:10.5px;color:var(--steel);
+    line-height:1.75;display:block;margin-top:7px;letter-spacing:.02em}
+  .area .pl{font-family:var(--display);font-weight:700;font-size:13px;display:block;margin-top:8px}
+  .area .pl.pos{color:var(--pine)} .area .pl.neg{color:var(--alert)}
+  .area[aria-pressed="true"] b:before{content:"■ ";color:var(--pine);font-size:.7em;vertical-align:2px}
+  .area b:before{content:"□ ";color:var(--steel);font-size:.7em;vertical-align:2px}
   .how{display:grid;gap:1px;margin-top:28px;background:var(--line);
     border:1px solid var(--line)}
   @media(min-width:720px){.how{grid-template-columns:repeat(3,1fr)}}
@@ -227,6 +367,7 @@
     <a class="brand" href="index.html">Yohan Lee</a>
     <div class="links">
       <a href="index.html#method">방법</a>
+      <a href="index.html#map">과업 지도</a>
       <a href="index.html#theses">관점</a>
       <a href="index.html#library">서재</a>
       <a href="lab.html" aria-current="page">실험실</a>
@@ -241,9 +382,8 @@
   </header>
 
   <div class="tabs" role="tablist">
-    <button role="tab" aria-selected="true" data-p="p1">01 배차 시뮬레이터</button>
-    <button role="tab" aria-selected="false" data-p="p2">02 제약 실험</button>
-    <button role="tab" aria-selected="false" data-p="p3">03 밀도 실험</button>
+    <button role="tab" aria-selected="true" data-p="p1" data-h="dispatch">01 배차 시뮬레이터</button>
+    <button role="tab" aria-selected="false" data-p="p2" data-h="prompt">02 프롬프트 비교</button>
   </div>
 
   <!-- ================= 01 DISPATCH ================= -->
@@ -319,78 +459,156 @@
 
   <!-- ================= 02 CONSTRAINT ================= -->
   <section class="panel" id="p2" role="tabpanel">
-    <h2>제약은 출력을 좁히는 장치가 아니라 대비를 키우는 장치다</h2>
-    <p class="why">프롬프트에서 제약의 역할은 흔히 "범위를 줄이는 것"으로 설명됩니다. 실제로는 다릅니다. 아래 두 슬라이더를 각각 움직여 보세요. <b>온도를 낮추면 분포 전체가 눌려서 평평해지거나 하나로 쏠립니다. 제약을 올리면 조건에 맞는 후보만 위로 솟고 나머지는 내려갑니다.</b> 둘은 같은 결과처럼 보이지만 도달 방식이 반대입니다. 제약은 정보를 더하고, 온도는 정보를 더하지 않습니다.</p>
+    <h2>프롬프트를 어떻게 쓰면 답이 달라지는가 — 같은 질문, 두 모델</h2>
 
-    <div class="ctl two">
-      <div>
-        <label for="c-k">제약 강도 <b id="c-kv">0.0</b></label>
-        <input type="range" id="c-k" min="0" max="6" step="0.1" value="0">
-        <p class="hint">제약 조건: “구조적 원인을 지목하라”</p>
+    <div class="frame">
+      <h4>이 실험이 다루는 것</h4>
+      <p>흔히 궁금해하는 세 가지를 실제로 돌려서 답을 나란히 놓았습니다. <b>길게 쓰는 게 나은가</b>, <b>질문에 방향을 심으면 어떻게 되는가</b>, <b>결론을 미리 주면 어떻게 되는가</b>. 시뮬레이션이 아니라 실제 응답입니다.</p>
+      <p>Claude Opus 5와 Gemini 3.1 Pro · 2026년 8월 · 각 프롬프트는 별도 새 대화에서 1회 실행 · 재현 시 결과가 달라질 수 있습니다 · 응답은 지면상 발췌했습니다</p>
+    </div>
+
+    <!-- ============ 어젠다 1 ============ -->
+    <div class="ag">
+      <h3>어젠다 1 · 질문에 심긴 방향<span class="verd part">부분 반증</span></h3>
+      <p class="hyp">가설 — 같은 사실을 물어도 “며칠까지”는 <b>하한</b>을 요구하고 “최대 며칠까지”는 <b>상한</b>을 요구하므로 답이 달라진다.</p>
+
+      <div class="pr">
+        <div class="q"><i>A</i>차에 두고 개봉한 생수, 며칠까지 보관해도 될까?</div>
+        <div class="ans">
+          <div class="an"><span class="m">Claude Opus 5</span>
+            <div class="hl">하루 안에 마시고, 지났으면 버릴 것</div>
+            <details><summary>발췌</summary><p>입을 댄 병에는 구강 세균이 들어가고, 차 안은 여름철 50도를 넘기도 해서 증식이 빠릅니다. 페트병이 고온에서 미량의 화학물질을 내놓을 수 있다는 점도 있습니다.</p></details>
+          </div>
+          <div class="an"><span class="m">Gemini 3.1 Pro</span>
+            <div class="hl cool">단 하루도 보관 말고 즉시 폐기</div>
+            <details><summary>발췌</summary><p>한국수자원공사 실험을 근거로, 입을 대고 마신 생수를 상온에 두면 하루 만에 세균이 기준치의 수백 배로 증식한다고 설명합니다. 페트병에서 안티몬·포름알데히드가 용출될 우려도 함께 제시하며, 세차용으로 쓰는 것은 괜찮다고 덧붙입니다.</p></details>
+          </div>
+        </div>
       </div>
-      <div>
-        <label for="c-t">온도 (temperature) <b id="c-tv">1.00</b></label>
-        <input type="range" id="c-t" min="0.15" max="2.5" step="0.05" value="1">
-        <p class="hint">낮으면 뾰족해지고 높으면 평평해집니다</p>
+
+      <div class="pr">
+        <div class="q"><i>B</i>차에 두고 개봉한 생수, 최대 며칠까지 안전할까?</div>
+        <div class="ans">
+          <div class="an"><span class="m">Claude Opus 5</span>
+            <div class="hl warm">조건이 좋다면 2~3일, 그보다 길 수도</div>
+            <details><summary>발췌</summary><p>서늘한 계절이고 병에 직접 입을 대지 않았다면 그보다 길어도 괜찮을 수 있다고 답했습니다. A와 같은 지식을 쓰면서 방향만 반대로 잡았습니다.</p></details>
+          </div>
+          <div class="an"><span class="m">Gemini 3.1 Pro</span>
+            <div class="hl cool">헤드라인 동일 — 즉시 폐기</div>
+            <details><summary>발췌</summary><p>다만 A보다 훨씬 구체적인 수치를 꺼냈습니다. 대시보드 최대 92도, 개봉 직후 1mL당 1마리였던 세균이 입을 댄 직후 900마리, 더운 환경에서 4~5시간 만에 100만 마리. 예일 공중보건대를 인용해 30도부터 화학물질 방출이 시작된다고 덧붙였습니다.</p><p>그리고 조건별 보관표를 새로 만들어 <b>냉장·입 대지 않은 경우 최대 5일까지 가능</b>이라고 적었습니다. 헤드라인은 지켰지만 허용 상한은 표 안으로 들어갔습니다.</p></details>
+          </div>
+        </div>
+      </div>
+
+      <div class="pr">
+        <div class="q"><i>C</i>차에 두고 개봉한 생수의 보관 안전성에 영향을 주는 변수와, 각 변수별 근거를 알려줘.</div>
+        <div class="ans">
+          <div class="an"><span class="m">Claude Opus 5</span>
+            <div class="hl">숫자 대신 변수 4개</div>
+            <details><summary>발췌</summary><p>온도, 입을 댔는지, 직사광선, 병의 재질과 재사용 여부. 조합에 따라 안전 기간이 몇 시간에서 며칠까지 달라진다고만 답했습니다.</p></details>
+          </div>
+          <div class="an"><span class="m">Gemini 3.1 Pro</span>
+            <div class="hl">변수 4개 + 출처 3건</div>
+            <details><summary>발췌</summary><p>타액 유입, 차량 내부 온도, 방치 시간, 직사광선으로 나누고 각각에 수자원공사·맥길대·난징대 연구를 붙였습니다. 변수표를 먼저 제시한 뒤 항목별 근거를 서술했습니다.</p></details>
+          </div>
+        </div>
+      </div>
+
+      <div class="read">
+        <h4>결과</h4>
+        <p>가설은 절반만 맞았습니다. Claude는 프레임에 끌려가 “하루”에서 “2~3일”로 옮겼습니다. <b>Gemini는 헤드라인을 바꾸지 않았습니다.</b> 안전이 걸린 주제에는 방향에 끌려가지 않도록 방어가 걸려 있는 것으로 보입니다.</p>
+        <p>그런데 Gemini도 효과를 완전히 피하지는 못했습니다. “최대”라고 묻자 <b>허용 조건표를 새로 만들어 최대 5일이라는 숫자를 내놨습니다.</b> 결론은 지키면서 근거는 관대해진 셈입니다. 프레임은 결론을 못 바꿀 때 서술을 바꿉니다.</p>
+        <p>그리고 C가 가장 유용했습니다. <b>방향을 지우면 답이 아니라 판단할 재료가 옵니다.</b> 숫자 하나를 원하면 그 숫자는 질문이 정한 방향을 따릅니다.</p>
       </div>
     </div>
 
-    <p class="hint" style="margin-top:26px">프롬프트 — “국내 미들마일 시장은 ___”</p>
-    <div class="bars" id="c-bars"></div>
-    <div class="readout">
-      <span>상위 1개 확률<b id="c-top">–</b></span>
-      <span>엔트로피 (bits)<b id="c-ent">–</b></span>
-      <span>유효 후보 수<b id="c-eff">–</b></span>
+    <!-- ============ 어젠다 2 ============ -->
+    <div class="ag">
+      <h3>어젠다 2 · 결론을 미리 준 질문<span class="verd no">예상보다 심각</span></h3>
+      <p class="hyp">가설 — “왜 A가 나은가”는 결론을 전제로 주므로 모델이 그것을 정당화하고, “A와 B를 비교해줘”는 양쪽을 놓는다.</p>
+
+      <div class="pr">
+        <div class="q"><i>A</i>왜 미들마일 플랫폼이 기존 주선업보다 나은가?</div>
+        <div class="ans">
+          <div class="an"><span class="m">Claude Opus 5</span>
+            <div class="hl">반대 근거 없음 — 장점만 나열</div>
+            <details><summary>발췌</summary><p>다단계 수수료 제거, 가격 투명성, 정산 주기 관리, 배차 이력의 데이터화. 반론은 한 줄도 없었습니다.</p></details>
+          </div>
+          <div class="an"><span class="m">Gemini 3.1 Pro</span>
+            <div class="hl">반대 근거 없음 — 비교표에서 전 항목 우위</div>
+            <details><summary>발췌</summary><p>배차·운임·추적·정산 네 항목의 비교표를 만들고 모든 행에서 플랫폼이 이기게 배치했습니다. 전자 인수증, 빠른 정산, 복화 매칭, 실시간 트래킹을 3대 장점으로 정리했습니다.</p></details>
+          </div>
+        </div>
+      </div>
+
+      <div class="pr">
+        <div class="q"><i>B</i>미들마일 플랫폼과 기존 주선업을 비교해줘.</div>
+        <div class="ans">
+          <div class="an"><span class="m">Claude Opus 5</span>
+            <div class="hl warm">반대 근거 등장</div>
+            <details><summary>발췌</summary><p>주선업자가 쥔 것은 정보 중개만이 아니라 관계 자본이라는 점, 미국의 순수 디지털 중개 사업자들이 물량 감소 국면에서 대거 실패한 점, 살아남은 곳은 결제·신용·정산을 묶은 곳이라는 점을 짚었습니다.</p></details>
+          </div>
+          <div class="an"><span class="m">Gemini 3.1 Pro</span>
+            <div class="hl cool">A와 사실상 동일한 결론</div>
+            <details><summary>발췌</summary><p>다시 비교표를 만들고 다시 모든 행에서 플랫폼이 이깁니다. 그리고 “플랫폼이 정보 비대칭성과 불투명한 가격 구조를 해결하고 있다”로 닫았습니다. 기존 주선업의 강점은 등장하지 않았습니다.</p></details>
+          </div>
+        </div>
+      </div>
+
+      <div class="read">
+        <h4>결과</h4>
+        <p>가설보다 나쁜 결과입니다. <b>중립적으로 물었는데 중립적인 답이 오지 않았습니다.</b> Gemini는 두 질문에 같은 결론을 냈습니다. 편향이 질문에만 있는 게 아니라 그 주제의 지배적 서사에 이미 들어 있었기 때문입니다.</p>
+        <p>구조적인 이유도 있습니다. “비교해줘”라는 요청은 비교표를 부르고, <b>비교표는 새것이 이기도록 생긴 형식입니다.</b> 낡은 방식의 강점은 표의 칸에 들어가기 어렵습니다.</p>
+        <p>그래서 질문에서 의도를 빼는 것으로는 부족합니다. <b>반대 근거를 명시적으로 요구해야 합니다</b> — “A가 실패한 사례와 B가 여전히 유효한 이유를 각각 대라”처럼. 자기 가설을 확인하려고 묻는 사람에게 모델은 협력적입니다.</p>
+      </div>
     </div>
+
+    <!-- ============ 어젠다 3 ============ -->
+    <div class="ag">
+      <h3>어젠다 3 · 길게 쓰기 vs 전문 용어로 압축하기<span class="verd ok">가설 확정</span></h3>
+      <p class="hyp">가설 — 전문 용어로 압축하면 깔끔하지만, 제약을 주지 않으면 <b>일반론</b>이 돌아온다.</p>
+
+      <div class="pr">
+        <div class="q"><i>A</i>저는 국내 물류 기업의 전략 담당자입니다. … 이미 배차 플랫폼 운영 경험과 기사 네트워크를 일부 보유하고 있습니다. 다만 초기 3년간은 큰 적자를 감당하기 어렵습니다. 이런 조건에서 검토할 만한 수익모델 세 가지와 각각의 장단점을 알려주세요. <span style="color:var(--steel)">(전문 190자)</span></div>
+        <div class="ans">
+          <div class="an"><span class="m">Claude Opus 5</span>
+            <div class="hl warm">제약을 받아 순서까지 제시</div>
+            <details><summary>발췌</summary><p>정산 대행 / 주선업자용 도구 판매 / 특정 화종 수직 모델 세 가지를 놓고, <b>적자 제약이 명시적이므로 둘째와 셋째의 조합을 먼저 하고 첫째는 자금 구조가 갖춰진 뒤에 붙이라</b>고 순서를 지정했습니다.</p></details>
+          </div>
+          <div class="an"><span class="m">Gemini 3.1 Pro</span>
+            <div class="hl warm">제약을 받아 특정 전략을 배제</div>
+            <details><summary>발췌</summary><p>먼저 <b>“쿠팡이나 카카오모빌리티처럼 보조금을 투입하는 양면시장 전략은 피해야 한다”</b>고 명시적으로 배제했습니다. SaaS TMS / 버티컬 특화 주선 / 빠른 정산·멤버십을 제시하고 각 모델의 초기 자본 부담과 매출 발생 속도를 표로 비교했습니다.</p><p>그리고 되물었습니다 — 보유한 기사 네트워크의 차종과 취급 품목이 무엇이냐고.</p></details>
+          </div>
+        </div>
+      </div>
+
+      <div class="pr">
+        <div class="q"><i>B</i>미들마일 플랫폼 수익모델 3개, 각 장단점 표로 <span style="color:var(--steel)">(전문 24자)</span></div>
+        <div class="ans">
+          <div class="an"><span class="m">Claude Opus 5</span>
+            <div class="hl cool">매칭 수수료 · 구독료 · 부가 금융</div>
+            <details><summary>발췌</summary><p>3행 표. 어느 교과서에나 있는 분류이고, 무엇을 먼저 해야 하는지에 대한 판단은 없습니다.</p></details>
+          </div>
+          <div class="an"><span class="m">Gemini 3.1 Pro</span>
+            <div class="hl cool">매칭 수수료 · SaaS 구독 · 부가 금융</div>
+            <details><summary>발췌</summary><p>같은 세 가지. 설명이 더 길고 국내 사업자 이름을 덧붙였지만 분류와 결론은 동일합니다.</p></details>
+          </div>
+        </div>
+      </div>
+
+      <div class="read">
+        <h4>결과</h4>
+        <p>여기서 가장 선명한 발견이 나왔습니다. <b>압축된 프롬프트에서 두 모델이 사실상 같은 답을 냈습니다.</b> 분류 세 개가 이름까지 겹칩니다. 반대로 긴 프롬프트에서는 서로 다른, 각자 구체적인 답을 냈습니다.</p>
+        <p>즉 <b>프롬프트가 짧으면 모델 차이가 사라지고, 길면 드러납니다.</b> 짧게 물으면 어느 모델을 쓰든 같은 교과서가 나옵니다. 모델을 고르는 일이 의미를 갖는 것은 제약을 충분히 준 다음입니다.</p>
+        <p>그리고 원래 질문에 답하면 — <b>전문 용어로 압축하는 것은 요구가 명확할 때의 미덕이고, 판단을 원할 때는 제약을 다 줘야 합니다.</b> 모델이 알아서 채워주지 않습니다. 채우면 일반론으로 채웁니다.</p>
+      </div>
+    </div>
+
     <div class="rule">
       <p class="hint">
-        각 후보에 기본 로짓이 있고, 제약에 부합하는 후보에만 제약 강도가 가산됩니다.<br>
-        확률 = softmax(로짓 / 온도). 엔트로피가 낮을수록 모델이 하나를 확신합니다.<br>
-        온도만 내려도 엔트로피는 떨어지지만, 무엇이 위로 올라올지는 통제되지 않습니다.
-      </p>
-    </div>
-  </section>
-
-  <!-- ================= 03 DENSITY ================= -->
-  <section class="panel" id="p3" role="tabpanel">
-    <h2>배송 원가는 거리가 아니라 밀도의 함수다</h2>
-    <p class="why">라스트마일 단가 논쟁은 대개 거리와 건당 수수료를 놓고 벌어집니다. 그런데 원가를 실제로 결정하는 변수는 단위 면적당 물량 밀도입니다. <b>밀도가 낮으면 배송 사이 이동거리가 늘고, 그 이동은 매출을 만들지 않습니다.</b> 슬라이더를 움직여 보세요. 밀도를 두 배로 올릴 때 원가가 절반으로 떨어지지 않는다는 점, 그리고 낮은 밀도 구간에서 곡선이 급격히 치솟는다는 점이 핵심입니다. 밀도를 확보하지 못한 확장은 규모가 커질수록 손실도 커집니다.</p>
-
-    <div class="ctl two">
-      <div>
-        <label for="v-d">배송 밀도 <b id="v-dv">20</b></label>
-        <input type="range" id="v-d" min="2" max="120" step="1" value="20">
-        <p class="hint">단위 면적(㎢)당 일일 배송 건수</p>
-      </div>
-      <div>
-        <label for="v-f">건당 고정비 (원) <b id="v-fv">900</b></label>
-        <input type="range" id="v-f" min="200" max="2000" step="50" value="900">
-        <p class="hint">밀도와 무관한 상하차·분류·검수 비용</p>
-      </div>
-    </div>
-
-    <svg viewBox="0 0 700 300" style="width:100%;height:auto;margin-top:34px" role="img" aria-label="밀도에 따른 배송 건당 원가 곡선">
-      <line class="ax" x1="52" y1="255" x2="672" y2="255"></line>
-      <line class="ax" x1="52" y1="22" x2="52" y2="255"></line>
-      <g id="v-grid"></g>
-      <path class="cv" id="v-curve"></path>
-      <line class="gd" id="v-vline" x1="0" y1="22" x2="0" y2="255"></line>
-      <circle id="v-dot" r="4.5" fill="#14563F"></circle>
-      <text x="52" y="278">밀도 (건/㎢/일) →</text>
-      <text x="6" y="16">원가(원)</text>
-    </svg>
-
-    <div class="readout">
-      <span>건당 원가<b id="v-cost">–</b></span>
-      <span>배송 간 평균 이동<b id="v-hop">–</b></span>
-      <span>밀도 2배 시 원가<b id="v-x2">–</b></span>
-      <span>이동비 비중<b id="v-share">–</b></span>
-    </div>
-    <div class="rule">
-      <p class="hint">
-        간이 모형입니다. 균등 분포를 가정하면 배송 간 평균 이동거리는 밀도의 제곱근에 반비례합니다.<br>
-        건당 원가 = 고정비 + (이동거리 × 거리당 변동비). 실제 원가에는 시간창·차량·인건비 구조가 더 붙습니다.<br>
-        보실 것은 절대 수치가 아니라 곡선의 모양입니다.
+        한 번의 실행 결과이며 재현 시 달라질 수 있습니다 · 응답은 지면상 발췌·요약했습니다<br>
+        Claude Opus 5 · Gemini 3.1 Pro · 2026년 8월 · 각 프롬프트는 별도의 새 대화에서 실행<br>
+        같은 프롬프트를 직접 돌려보시면 좋습니다. 다르게 나오면 그것도 결과입니다.
       </p>
     </div>
   </section>
@@ -404,17 +622,29 @@
 var $=function(s){return document.querySelector(s)},
     $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
 
-/* ---------- tabs ---------- */
+/* ---------- tabs + hash routing ---------- */
+function showTab(b,push){
+  if(!b) return;
+  $$('.tabs button').forEach(function(x){x.setAttribute('aria-selected','false')});
+  $$('.panel').forEach(function(x){x.classList.remove('on')});
+  b.setAttribute('aria-selected','true');
+  $('#'+b.dataset.p).classList.add('on');
+  if(b.dataset.p==='p1'){ sigMap=''; drawMap(); }
+  if(push&&window.history&&history.replaceState){
+    history.replaceState(null,'','#'+b.dataset.h);
+  }
+}
+function tabByHash(){
+  var h=(location.hash||'').replace('#','').toLowerCase();
+  if(!h) return null;
+  var found=null;
+  $$('.tabs button').forEach(function(b){ if(b.dataset.h===h) found=b; });
+  return found;
+}
 $$('.tabs button').forEach(function(b){
-  b.addEventListener('click',function(){
-    $$('.tabs button').forEach(function(x){x.setAttribute('aria-selected','false')});
-    $$('.panel').forEach(function(x){x.classList.remove('on')});
-    b.setAttribute('aria-selected','true');
-    $('#'+b.dataset.p).classList.add('on');
-    if(b.dataset.p==='p2') drawC();
-    if(b.dataset.p==='p3') drawV();
-  });
+  b.addEventListener('click',function(){ showTab(b,true); });
 });
+window.addEventListener('hashchange',function(){ var b=tabByHash(); if(b) showTab(b,false); });
 
 /* ---------- safe storage ---------- */
 var mem={};
@@ -730,80 +960,8 @@ $('#d-clear').addEventListener('click',function(){
 drawHof(); drawMap(); hud();
 window.addEventListener('resize',function(){sigMap='';drawMap()});
 
-/* =======================================================
-   02 · CONSTRAINT (softmax)
-   ======================================================= */
-var CAND=[
-  {t:'크다',            z:2.5, ok:0},
-  {t:'성장하고 있다',    z:2.2, ok:0},
-  {t:'복잡하다',         z:1.9, ok:0},
-  {t:'낙후되어 있다',    z:1.5, ok:1},
-  {t:'디지털화가 늦다',  z:1.2, ok:1},
-  {t:'규제가 자산을 만들었다', z:0.4, ok:1}
-];
-function softmax(zs,T){
-  var m=Math.max.apply(null,zs);
-  var e=zs.map(function(z){return Math.exp((z-m)/T)});
-  var s=e.reduce(function(a,b){return a+b},0);
-  return e.map(function(x){return x/s});
-}
-function drawC(){
-  var k=parseFloat($('#c-k').value), T=parseFloat($('#c-t').value);
-  $('#c-kv').textContent=k.toFixed(1); $('#c-tv').textContent=T.toFixed(2);
-  var zs=CAND.map(function(c){return c.z+(c.ok?k:0)});
-  var ps=softmax(zs,T), mx=Math.max.apply(null,ps);
-  $('#c-bars').innerHTML=CAND.map(function(c,i){
-    return '<div class="br'+(ps[i]===mx?' hi':'')+'">'+
-      '<div class="t"><span class="n">'+c.t+(c.ok?' <span style="font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:#14563F">제약 부합</span>':'')+
-      '</span><span class="p">'+(ps[i]*100).toFixed(1)+'%</span></div>'+
-      '<div class="g"><i style="width:'+(ps[i]/mx*100).toFixed(1)+'%"></i></div></div>';
-  }).join('');
-  var ent=-ps.reduce(function(a,p){return a+(p>1e-9?p*Math.log2(p):0)},0);
-  $('#c-top').textContent=(mx*100).toFixed(1)+'%';
-  $('#c-ent').textContent=ent.toFixed(2);
-  $('#c-eff').textContent=Math.pow(2,ent).toFixed(2);
-}
-$('#c-k').addEventListener('input',drawC);
-$('#c-t').addEventListener('input',drawC);
-drawC();
-
-/* =======================================================
-   03 · DENSITY
-   ======================================================= */
-var VAR_PER_KM=1400; // 원/km
-function costAt(dens,fix){
-  var hop=0.62/Math.sqrt(dens);      // km, 균등분포 근사
-  return {c:fix+hop*VAR_PER_KM, hop:hop};
-}
-function drawV(){
-  var dens=parseFloat($('#v-d').value), fix=parseFloat($('#v-f').value);
-  $('#v-dv').textContent=dens; $('#v-fv').textContent=fix;
-  var X0=52,X1=672,Y0=255,Y1=22, DMIN=2, DMAX=120;
-  var yMax=fix+ (0.62/Math.sqrt(DMIN))*VAR_PER_KM;
-  var sx=function(d){return X0+(d-DMIN)/(DMAX-DMIN)*(X1-X0)};
-  var sy=function(c){return Y0-(c/yMax)*(Y0-Y1)};
-  var pts=[],d;
-  for(d=DMIN;d<=DMAX;d+=1) pts.push(sx(d).toFixed(1)+','+sy(costAt(d,fix).c).toFixed(1));
-  $('#v-curve').setAttribute('d','M'+pts.join(' L'));
-  var g='',i;
-  for(i=1;i<=4;i++){var y=Y0-(Y0-Y1)*i/4;
-    g+='<line class="gd" x1="'+X0+'" y1="'+y+'" x2="'+X1+'" y2="'+y+'"></line>'+
-       '<text x="6" y="'+(y+3)+'">'+Math.round(yMax*i/4)+'</text>';}
-  [2,30,60,90,120].forEach(function(v){
-    g+='<text x="'+(sx(v)-8)+'" y="270">'+v+'</text>';});
-  $('#v-grid').innerHTML=g;
-  var cur=costAt(dens,fix), x2=costAt(Math.min(DMAX,dens*2),fix);
-  $('#v-vline').setAttribute('x1',sx(dens)); $('#v-vline').setAttribute('x2',sx(dens));
-  $('#v-dot').setAttribute('cx',sx(dens)); $('#v-dot').setAttribute('cy',sy(cur.c));
-  $('#v-cost').textContent=Math.round(cur.c).toLocaleString()+'원';
-  $('#v-hop').textContent=(cur.hop*1000).toFixed(0)+'m';
-  $('#v-x2').textContent=Math.round(x2.c).toLocaleString()+'원 ('+
-    (x2.c/cur.c*100-100).toFixed(1)+'%)';
-  $('#v-share').textContent=((cur.hop*VAR_PER_KM)/cur.c*100).toFixed(0)+'%';
-}
-$('#v-d').addEventListener('input',drawV);
-$('#v-f').addEventListener('input',drawV);
-drawV();
+/* deep link on load: index.html → lab.html#constraint 등 */
+(function(){ var b=tabByHash(); if(b) showTab(b,false); })();
 
 })();
 </script>

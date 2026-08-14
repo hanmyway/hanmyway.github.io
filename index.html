@@ -87,6 +87,55 @@
     .node.lit:after{background:var(--pine);border-color:var(--pine);transform:scale(1.05)}
   }
 
+  /* ---- 3D method graph ---- */
+  .gr{margin-top:30px;border:1px solid var(--line);background:rgba(255,255,255,.3);
+    position:relative;overflow:hidden}
+  .gr canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}
+  .gr canvas.drag{cursor:grabbing}
+  .grc{position:relative;aspect-ratio:16/9.6}
+  @media(max-width:700px){.grc{aspect-ratio:1/1.2}}
+  .grnote{display:none;align-items:flex-start;gap:10px;
+    border-bottom:1px solid var(--line);background:rgba(176,132,40,.13);
+    padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.75;
+    letter-spacing:.01em;color:var(--ink)}
+  .grnote b{color:var(--gold);font-weight:600}
+  .grnote button{flex:none;background:none;border:1px solid var(--line);color:var(--steel);
+    font-family:var(--mono);font-size:12px;width:24px;height:24px;line-height:1;
+    cursor:pointer;touch-action:manipulation}
+  .grnote button:hover{border-color:var(--pine);color:var(--pine)}
+  body.touchy .grnote{display:flex}
+  .grzoom{position:absolute;top:12px;right:14px;display:flex;gap:5px;align-items:center}
+  .grzoom button{width:29px;height:29px;border:1px solid var(--line);background:rgba(255,255,255,.55);
+    color:var(--steel);font-family:var(--mono);font-size:13px;line-height:1;cursor:pointer;
+    touch-action:manipulation;transition:all .15s}
+  .grzoom button:hover{border-color:var(--pine);color:var(--pine)}
+  .grzoom span{font-family:var(--mono);font-size:10px;color:var(--steel);
+    letter-spacing:.06em;min-width:3.4em;text-align:right}
+  .grleg{position:absolute;top:12px;left:14px;display:flex;flex-direction:column;gap:6px;
+    pointer-events:none}
+  .grleg span{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--steel);display:flex;align-items:center;gap:7px}
+  .grleg i{width:9px;height:9px;border-radius:50%;flex:none;background:var(--pine)}
+  .grleg i.t{background:none;border:1.5px solid var(--steel)}
+  .grhint{position:absolute;bottom:12px;left:14px;right:14px;font-family:var(--mono);
+    font-size:9.5px;letter-spacing:.09em;color:var(--steel);pointer-events:none;line-height:1.7}
+  .grinfo{border-top:1px solid var(--line);padding:16px 18px;min-height:118px}
+  .grinfo .e{font-family:var(--mono);font-size:11px;color:var(--steel);letter-spacing:.02em;line-height:1.8}
+  .grinfo h4{font-family:var(--display);font-weight:700;font-size:1.06rem;
+    letter-spacing:-.015em;line-height:1.4}
+  .grinfo .meta{font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--steel);margin-top:7px}
+  .grinfo .bd{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .grinfo .bd b{font-family:var(--mono);font-size:9.5px;font-weight:400;letter-spacing:.11em;
+    border:1px solid var(--pine);color:var(--pine);padding:3px 7px}
+  .grinfo .bd b.off{border-color:var(--line);color:var(--line)}
+  .grinfo p{font-size:14.5px;line-height:1.75;margin-top:11px;color:#2A312D;max-width:44em}
+  .grbar{display:flex;gap:8px;flex-wrap:wrap;padding:0 18px 16px}
+  .grbar button{font-family:var(--mono);font-size:10px;letter-spacing:.11em;
+    text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--steel);
+    padding:8px 13px;cursor:pointer;touch-action:manipulation;transition:all .15s}
+  .grbar button:hover{border-color:var(--pine);color:var(--pine)}
+  .grbar button[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:var(--concrete)}
   .th{border-top:1px solid var(--line)}
   .th div{display:grid;gap:6px 32px;padding:22px 0;border-bottom:1px solid var(--line)}
   .th .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
@@ -140,6 +189,7 @@
     <a class="brand" href="index.html" aria-current="page">Yohan Lee</a>
     <div class="links">
       <a href="index.html#method">방법</a>
+      <a href="index.html#map">과업 지도</a>
       <a href="index.html#theses">관점</a>
       <a href="index.html#library">서재</a>
       <a href="lab.html">실험실</a>
@@ -201,6 +251,42 @@
   </section>
 
   <section class="sec">
+    <div class="sec-label" id="map">과업 지도 / Map of work</div>
+    <p class="sec-intro">12년치 과업 43건을 회사가 아니라 <b>일의 단계</b>로 묶었습니다. 회사 노드는 없습니다 — 어느 조직에서 했는지는 점을 짚으면 나옵니다. 네 개의 큰 점을 지우면 이 지도는 산업별로 흩어집니다. 그 네 점이 반복된 것이고, 제가 기억하는 것입니다.</p>
+
+    <div class="gr">
+      <div class="grnote" id="g-note">
+        <span><b>PC 환경에 최적화된 화면입니다.</b> 43개 노드를 회전·확대하며 보는 구조라, 넓은 화면과 마우스에서 훨씬 잘 읽힙니다. 모바일에서는 아래 단계 버튼으로 한 단계씩 보시는 편이 편합니다.</span>
+        <button id="g-nx" aria-label="안내 닫기">×</button>
+      </div>
+      <div class="grc">
+        <canvas id="g-cv" role="img" aria-label="과업을 일의 단계로 연결한 3차원 그래프"></canvas>
+        <div class="grleg">
+          <span><i></i>일의 단계</span>
+          <span><i class="t"></i>개별 과업</span>
+        </div>
+        <div class="grzoom">
+          <button id="g-in" aria-label="확대">+</button>
+          <button id="g-out" aria-label="축소">−</button>
+          <button id="g-rs" aria-label="처음으로">⟲</button>
+          <span id="g-zl">×1.00</span>
+        </div>
+        <div class="grhint" id="g-hint">끌어서 회전 · 휠로 확대 · Shift나 우클릭 끌기로 이동 · 43건</div>
+      </div>
+      <div class="grinfo" id="g-info">
+        <div class="e">점을 짚거나 눌러보세요. 과업이 어떤 문제였고 무엇을 만들었는지 나옵니다.</div>
+      </div>
+      <div class="grbar">
+        <button data-s="-1" aria-pressed="true">전체</button>
+        <button data-s="0" aria-pressed="false">본질 규명</button>
+        <button data-s="1" aria-pressed="false">시도 구축</button>
+        <button data-s="2" aria-pressed="false">AX·DX 주도</button>
+        <button data-s="3" aria-pressed="false">지속가능성</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
     <div class="sec-label" id="theses">지금 보고 있는 것 / Current theses</div>
     <p class="sec-intro">현재 관심의 좌표입니다. 위의 방법을 지금 어디에 적용하고 있는지에 해당합니다.</p>
     <div class="th">
@@ -222,7 +308,7 @@
       </div>
       <div>
         <div class="k">AI literacy</div>
-        <div class="v">프롬프트의 제약은 출력을 좁히는 장치가 아니라 대비를 증폭시키는 장치다</div>
+        <div class="v">지시문은 순위를 바꾸고, 문서는 없던 선택지를 만든다</div>
       </div>
       <div>
         <div class="k">Agency</div>
@@ -280,15 +366,11 @@
     <div class="th">
       <div>
         <div class="k">01 Dispatch</div>
-        <div class="v"><a href="lab.html">배차 시뮬레이터</a> — 60초 동안 배차하며 공차 손실을 직접 봅니다. 명예의 전당 있음</div>
+        <div class="v"><a href="lab.html#dispatch">배차 시뮬레이터</a> — 직접 배차하며 공차 손실을 봅니다. 명예의 전당 있음</div>
       </div>
       <div>
-        <div class="k">02 Constraint</div>
-        <div class="v"><a href="lab.html">제약 실험</a> — 제약과 온도를 각각 움직여 softmax 분포가 어떻게 달라지는지 봅니다</div>
-      </div>
-      <div>
-        <div class="k">03 Density</div>
-        <div class="v"><a href="lab.html">밀도 실험</a> — 배송 원가가 왜 거리가 아니라 밀도의 함수인지 곡선으로 확인합니다</div>
+        <div class="k">02 Prompt</div>
+        <div class="v"><a href="lab.html#prompt">프롬프트 비교</a> — 같은 질문을 다르게 물어 Claude와 Gemini의 실제 답을 나란히 놓았습니다</div>
       </div>
     </div>
   </section>
@@ -314,6 +396,313 @@
     es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('lit');});
   },{rootMargin:'0px 0px -35% 0px',threshold:.15});
   nodes.forEach(function(n){io.observe(n)});
+})();
+</script>
+<script>
+/* ===== 과업 지도: 4단계 허브 + 과업 18 · Canvas 2D, 라이브러리 없음 ===== */
+(function(){
+"use strict";
+var cv=document.getElementById('g-cv'); if(!cv) return;
+var ctx=cv.getContext('2d');
+var CSS=getComputedStyle(document.documentElement);
+function v(k){return CSS.getPropertyValue(k).trim()}
+var C_INK=v('--ink')||'#1B1F1D', C_STEEL=v('--steel')||'#6E7873',
+    C_PINE=v('--pine')||'#14563F', C_LINE=v('--line')||'#C9CEC8',
+    C_BG=v('--concrete')||'#E4E7E3',
+    FONT=v('--display')||'sans-serif';
+
+var STAGE=['업의 본질 규명','새로운 시도 구축','AX·DX 주도','지속 가능성 관리'];
+var T=[
+ /* ── 업의 본질 규명 ── */
+ [0,'GCP 2020 중장기 전략 수립','CJ ENM',[1,1,0],'홈쇼핑 시장이 정점을 지나 성장세가 꺾인 국면에서 업의 본질과 지향점을 다시 정의했습니다. 5개년 포트폴리오와 CAPEX 플랜, 손익 목표, 비전을 담아 회장 승인을 받았습니다.'],
+ [0,'자율주행 전략 3레이어 재정의','카카오모빌리티',[0,1,0],'자율주행을 모델·Fleet OS·차량 세 레이어로 재정의하고, 그 위에 놓이는 배차권을 사업자가 끝까지 확보해야 하는 자산으로 규정했습니다. 경영진 논의 프레임으로 쓰였습니다.'],
+ [0,'전사 3개년 전략과 Physical AI 로드맵','카카오모빌리티',[0,1,0],'경영진 인터뷰와 본부별 리뷰를 토대로 전사 전략 내러티브를 정립하고 전환 로드맵을 문서화해 최고경영층에 보고했습니다.'],
+ [0,'미들마일 DX·플랫폼 BM 안착 논거','카카오모빌리티',[0,1,1],'내부 검토와 대외 정책·언론 커뮤니케이션의 공통 토대로 쓰인 전략 문서입니다. 사업부 전원 워크샵의 강독 교재로 채택됐습니다.'],
+ [0,'신규사업 Drive/Drop 판단 근거 명문화','CJ ENM',[0,1,1],'e그로서리, 건강기능식품 제조, 물류로봇, 다이닝웨어 등 다수를 검토했고 대부분이 Drop이었습니다. 접는 근거를 남기는 것을 결과물로 삼았습니다.'],
+ [0,'CVC 타겟 탐색 및 딜소싱','CJ ENM',[1,1,0],'인접 영역의 잠재 기회를 상시 목록으로 유지하며 100건 이상을 검토했습니다. Indicative offer 이상 진입은 4건이었습니다.'],
+ [0,'국경 간 거래 밸류에이션','CJ ENM',[1,1,0],'지역의 인구·문화 특성을 수치화한 뒤 산업 특성을 반영해 시장 규모를 판단하는 방식으로 밸류에이션을 주도했습니다.'],
+ [0,'유통시장 규모·성장성·경쟁강도 분석','CJ ENM',[1,1,0],'시장 변화 전망을 전사에 공유해 전략 전제를 갱신했습니다.'],
+ [0,'GNC 사업 성장정체 원인 규명','동원F&B',[1,1,0],'시장의 온라인 비중과 사업부의 온라인 비중 사이에 큰 격차가 있었습니다. 저관여 상품 중심 포트폴리오가 고관여 시장에서 우위를 못 만드는 구조를 진단했습니다.'],
+ [0,'산업 동향 상시 모니터링 파이프라인','카카오모빌리티',[0,0,1],'외부 리서치를 수집하는 데서 멈추지 않고 자사 관점 전략 시사점으로 전환하는 구조를 만들었습니다.'],
+ [0,'회계 마감 오류 근본원인 규명','SAP Labs Korea',[0,1,0],'유럽 고객사의 마감 오류가 국가별 소수점 표기법을 변환하지 않은 데서 비롯됐음을 규명해 소 취하로 이어졌습니다. 첫 직장에서 배운 방식입니다.'],
+
+ /* ── 새로운 시도 구축 ── */
+ [1,'전사 우선순위 충돌 탐지 체계','카카오모빌리티',[1,1,1],'현행 프로세스의 페인포인트 11개를 구조화해 데이터 모델과 룰 스펙으로 번역하고 설계부터 구현·운영까지 단독 수행했습니다. 월 1회 회의에서야 드러나던 자원 병목을 매일 후보로 산출합니다.'],
+ [1,'브랜드 사업 본부 신설 및 관리체계','CJ ENM',[0,1,0],'플랫폼 성장 한계를 넘기 위해 브랜드 역량을 내재화할 조직을 새로 꾸리고 관리체계와 회의체를 수립했습니다.'],
+ [1,'신제품 개발 프로세스 내재화','CJ ENM',[0,1,1],'시장조사에서 출시까지 전 과정을 카테고리 특성에 맞춰 명문화했습니다. 뷰티는 제조 내재화 가치가 낮다고 판단해 다자간 공급망으로, 리빙은 제조사 독점공급계약으로 방향을 갈랐습니다.'],
+ [1,'브랜드별 손익 배부 기준과 결산 체계','CJ ENM',[1,1,1],'관리결산 최소단위가 팀 코스트센터여서 브랜드별 손익을 비교할 수 없었습니다. 계정과목별 기여도를 매월 수치화해 평가 지표에 내장했습니다.'],
+ [1,'재고 선입선출 별도 평가 체계','CJ ENM',[1,0,1],'이동평균 기준의 기존 유통 시스템을 건드리지 않고, 선입선출 기준 재고금액을 별도로 평가하는 프로그램을 직접 만들었습니다.'],
+ [1,'대규모 상품 가격 모니터링 시스템','CJ ENM',[1,0,1],'약 2백만 SKU는 사람이 볼 수 없는 규모였습니다. 동종상품 판매처 중 최저가 순위와 격차를 매시간 갱신하는 체계를 개발자와 함께 구축했습니다.'],
+ [1,'Brand X · JBP 파트너십 구조','CJ ENM',[0,1,0],'협력업체 이탈을 종합몰의 핵심 위기로 지목하고, 콘텐츠 제작·IP 결합을 지렛대로 상위 브랜드사를 구조적으로 묶는 파트너십을 설계했습니다.'],
+ [1,'버티컬 온라인몰 인수 완주','CJ ENM',[0,1,0],'킥오프부터 PMI까지 완주한 인수 건입니다. 실사와 딜 구조 논의, 계약 체결을 거쳤습니다.'],
+ [1,'NB 브랜드 육성 및 수익성 개선','CJ ENM',[1,1,0],'외부 브랜드를 자사몰의 상품력으로 전환하며 수익성을 개선했습니다.'],
+ [1,'원료社 지분투자로 독점공급 확보','동원F&B',[0,1,0],'경쟁력 있는 개별인정형 원료사에 소수지분을 투자해 원료 독점공급 기반의 마진 개선 구조를 만들었습니다. 경쟁사 신제품 일정까지 조율되는 위치로 이어졌습니다.'],
+ [1,'고수익 성분 중심 포트폴리오 전환','동원F&B',[1,1,0],'대형 브랜드 의존 구조에서 벗어나 고수익 성분과 신제품 중심으로 사업 구조를 옮겼습니다. 홈쇼핑 선광고 뒤 온라인 롱테일로 낙수효과를 거두는 수익 모델을 설계했습니다.'],
+ [1,'프리미엄 가격 단위 제안','YPP',[1,1,0],'시장 선도 포지션을 활용해 새로운 가격 단위를 제안하고 점유율 확대로 연결했습니다. 컨설팅 시기의 일입니다.'],
+
+ /* ── AX·DX 주도 ── */
+ [2,'전사 AI 과제 총괄 및 AI 회의체 주도','카카오모빌리티',[1,1,0],'개별 도구 활용이 아니라 조직 단위 AI 포트폴리오 관점에서 주요 과제의 진척과 이슈를 관리합니다.'],
+ [2,'통합 멤버십 구축','동원F&B',[1,1,0],'통합회원 정책, 단일 로그인, 교차구매, 적립금 호환, 통합 프로모션까지 묶는 TF를 이끌어 B2C 플랫폼 통합 운영 기반을 확보했습니다.'],
+ [2,'전사 경영 대시보드 기획·개발','동원F&B',[1,1,0],'경영진이 주요 지표를 직접 보고 즉시 대응할 수 있는 체계를 만들어, 데이터 기반 의사결정의 토대를 놓았습니다.'],
+ [2,'전사 기간계 마이그레이션','동원F&B',[0,0,1],'영업·재무·자재·생산 모듈 전환의 범위와 순서를 설계하고 이행했습니다.'],
+ [2,'업무 자동화와 물류창고 시스템 도입','동원F&B',[1,0,1],'사람이 반복하던 작업을 자동 실행으로 옮기고, 온라인 물류창고에 분류 지원 시스템을 도입했습니다.'],
+ [2,'원장 기반 회의 덱 자동 생성','카카오모빌리티',[0,0,1],'회의 자료를 사람이 매번 다시 만들지 않도록, 원장에서 발표 문서까지 산출물 파이프라인을 정리했습니다.'],
+ [2,'BI 개편 등 내부혁신 과제 수행','CJ ENM',[0,1,0],'외부 파트너를 관리하며 내부 혁신 과제를 진행했습니다.'],
+
+ /* ── 지속 가능성 관리 ── */
+ [3,'흑자도산 리스크 발견과 차입금 조성','CJ ENM',[1,1,0],'인수 2년차에도 흑자전환이 지연된 자회사에 3개월 단독 파견됐습니다. 자산과 부채를 실물 대조하며 아래에서부터 훑은 결과 지급 구조에서 오는 흑자도산 위험을 발견하고, 차입을 형성해 막았습니다.'],
+ [3,'부실채권 결손과 대손충당금 설정','CJ ENM',[1,1,0],'채권 추심 기능을 강화하고 회수 불가능한 채권을 정리해 장부를 실제에 맞췄습니다.'],
+ [3,'해외 합작사업 7개국 9사이트 Exit','CJ ENM',[1,1,0],'현지 법인장들과 주간 콜을 돌리며 진척과 로컬 이슈를 관리하고, 유형자산 처분과 밸류에이션을 주도해 회계연도 안에 매각·청산을 마쳤습니다.'],
+ [3,'부문별 KPI 전 사이클과 신상필벌 기준','CJ ENM',[1,1,1],'연초 수립에서 월별 세분화, 연말 평가까지 한 바퀴를 운영했습니다. 초과달성 인센티브를 포함한 기준을 세워 성과중심 문화에 기여했습니다.'],
+ [3,'운영 리스크·승계 전제 설계','카카오모빌리티',[0,0,1],'사내 자동화가 만든 사람의 계정과 열의에 묶여 조용히 멈추는 것을 선행 리스크로 봤습니다. 임계·가중치·라우팅을 설정 시트로 외부화하고 런북을 시스템 안에 넣었습니다.'],
+ [3,'자기 레드팀 기반 절제된 파일럿','카카오모빌리티',[1,1,1],'완성된 기능을 스스로 공격해 너무 넓고 두 가정이 미검증이라는 결론을 냈습니다. 기능의 약 70%를 끈 상태로 두 가정에만 임계값을 걸고 keep/cut을 사전 정의했습니다.'],
+ [3,'현안 이슈 오너·기한 트래킹','카카오모빌리티',[1,1,0],'미해결 과제의 담당과 기한을 드러내 경영진 의사결정 리드타임을 줄였습니다.'],
+ [3,'전사 우선순위 월 단위 진척 관리','카카오모빌리티',[1,1,1],'과제를 정의·서열화하고 진척 관리 프로세스를 단독 운영합니다. 담당자 입력은 3개 항목·5분 안으로 줄였습니다.'],
+ [3,'전사 KPI 캐스케이딩과 분기 리뷰','카카오모빌리티',[1,1,1],'우선순위와 KPI를 하나의 사이클로 연결해 부문별로 내려보내고 분기마다 점검합니다.'],
+ [3,'서비스별 벤더 의존 리스크 맵','카카오모빌리티',[1,1,0],'핵심 서비스가 외부에 의존하는 지점을 구조적 리스크로 목록화했습니다.'],
+ [3,'지주사 제출 반기 경영성과리뷰','카카오모빌리티',[1,1,1],'향후 3년 전사 방향성과 자율주행·물류 현안에 대한 답변을 구성해 작성을 주도했습니다.'],
+ [3,'제조공장 경영 정상화','동원F&B',[1,1,0],'생산라인을 최적화하고 영업망을 재편해 가동률을 끌어올렸습니다.'],
+ [3,'사업부 KPI 목표 수립 및 평가','동원F&B',[1,1,1],'사업부 단위로 목표를 세우고 평가까지 운영하며 전무이사를 보좌했습니다.']
+];
+var BADGE=['측정 가능','입증 가능','재현 가능'];
+
+/* ---- nodes ---- */
+var N=[],E=[],adj={};
+var HUB=[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]];
+var seed=7; function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647-0.5}
+for(var i=0;i<4;i++){
+  N.push({k:'h',l:STAGE[i],s:i,x:HUB[i][0]*190,y:HUB[i][1]*190,z:HUB[i][2]*190,vx:0,vy:0,vz:0});
+}
+T.forEach(function(t){
+  var h=HUB[t[0]];
+  N.push({k:'t',l:t[1],s:t[0],co:t[2],bd:t[3],no:t[4],
+    x:h[0]*190+rnd()*190,y:h[1]*190+rnd()*190,z:h[2]*190+rnd()*190,vx:0,vy:0,vz:0});
+});
+T.forEach(function(t,i){ E.push([t[0],4+i]); });
+for(i=0;i<4;i++) E.push([i,(i+1)%4]);
+E.forEach(function(e){ (adj[e[0]]=adj[e[0]]||[]).push(e[1]); (adj[e[1]]=adj[e[1]]||[]).push(e[0]); });
+
+/* ---- force layout ---- */
+function relax(n){
+  var K=120,k2=K*K,it,i,j;
+  for(it=0;it<n;it++){
+    for(i=0;i<N.length;i++){ var a=N[i];
+      for(j=i+1;j<N.length;j++){ var b=N[j];
+        var dx=a.x-b.x,dy=a.y-b.y,dz=a.z-b.z,d2=dx*dx+dy*dy+dz*dz||.01;
+        if(d2>360000) continue;
+        var d=Math.sqrt(d2),f=k2/d2; if(f>3.2)f=3.2;
+        a.vx+=dx/d*f;a.vy+=dy/d*f;a.vz+=dz/d*f;
+        b.vx-=dx/d*f;b.vy-=dy/d*f;b.vz-=dz/d*f; } }
+    for(i=0;i<E.length;i++){ var p=N[E[i][0]],q=N[E[i][1]];
+      var L=(p.k==='h'&&q.k==='h')?K*3.1:K*1.65;
+      var dx=p.x-q.x,dy=p.y-q.y,dz=p.z-q.z,d=Math.sqrt(dx*dx+dy*dy+dz*dz)||.01;
+      var f=(d-L)*.035;
+      p.vx-=dx/d*f;p.vy-=dy/d*f;p.vz-=dz/d*f;
+      q.vx+=dx/d*f;q.vy+=dy/d*f;q.vz+=dz/d*f; }
+    for(i=0;i<N.length;i++){ var m=N[i], c=(m.k==='h'?.008:.0022);
+      m.vx+=-m.x*c;m.vy+=-m.y*c;m.vz+=-m.z*c;
+      m.vx*=.80;m.vy*=.80;m.vz*=.80;
+      m.x+=m.vx;m.y+=m.vy;m.z+=m.vz; }
+  }
+}
+relax(700);
+var RMAX=1; N.forEach(function(n){var r=Math.hypot(n.x,n.y,n.z); if(r>RMAX)RMAX=r;});
+
+/* ---- projection / render ---- */
+var W=0,H=0,DPR=1,yaw=0.6,pitch=-0.28,F=1500,fit=1,uz=2,zoom=1,px=0,py=0,
+    P=[],hover=null,sel=null,filt=-1,spin=1,inited=0;
+function resize(){
+  var r=cv.parentNode.getBoundingClientRect();
+  DPR=Math.min(window.devicePixelRatio||1,2);
+  W=Math.max(280,r.width); H=Math.max(240,r.height);
+  cv.width=W*DPR; cv.height=H*DPR;
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  var gain=F/(F-RMAX);                       // 최근접 노드의 원근 확대율
+  fit=Math.min(W/2-42,H/2-34)/(RMAX*gain);   // 실측 캔버스에 자동 맞춤
+  if(!inited){ inited=1; uz=(W<700?1.30:2.00); }
+  zoom=fit*uz; clampPan();
+}
+function proj(n){
+  var cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+  var x1=n.x*cy+n.z*sy, z1=-n.x*sy+n.z*cy, y1=n.y;
+  var y2=y1*cp-z1*sp, z2=y1*sp+z1*cp;
+  var s=F/(F-z2); if(s<.05)s=.05;
+  return {x:W/2+px+x1*s*zoom, y:H/2+py+y2*s*zoom, s:s*zoom, dep:z2, n:n};
+}
+function fog(d){var t=(d+520)/1040;return .30+.70*Math.max(0,Math.min(1,t))}
+function rad(n){return n.k==='h'?11:5.6}
+function on(i){ return filt<0 || N[i].s===filt }
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  P=[]; for(var i=0;i<N.length;i++) P.push(proj(N[i]));
+  var act=(sel!==null?sel:hover);
+  var nb={}; if(act!==null){nb[act]=1;(adj[act]||[]).forEach(function(k){nb[k]=1});}
+  var Es=[];
+  for(i=0;i<E.length;i++){
+    var a=P[E[i][0]],b=P[E[i][1]];
+    Es.push({a:a,b:b,hi:act!==null&&(E[i][0]===act||E[i][1]===act),
+      dim:!(on(E[i][0])&&on(E[i][1])),d:(a.dep+b.dep)/2});
+  }
+  Es.sort(function(p,q){return p.d-q.d});
+  Es.forEach(function(o){
+    ctx.beginPath(); ctx.moveTo(o.a.x,o.a.y); ctx.lineTo(o.b.x,o.b.y);
+    ctx.strokeStyle=o.hi?C_PINE:C_LINE;
+    ctx.lineWidth=(o.hi?1.6:.7)*((o.a.s+o.b.s)/2);
+    ctx.globalAlpha=o.dim?.05:(act!==null?(o.hi?.95:.10):fog(o.d)*.62);
+    ctx.stroke();
+  });
+  ctx.globalAlpha=1;
+  var ord=P.map(function(p,i){return i}).sort(function(p,q){return P[p].dep-P[q].dep});
+  ord.forEach(function(i){
+    var p=P[i],n=p.n,r=rad(n)*p.s;
+    var dim=!on(i)||(act!==null&&!nb[i]);
+    ctx.globalAlpha=(dim?.10:1)*fog(p.dep);
+    ctx.beginPath(); ctx.arc(p.x,p.y,r,0,7);
+    if(n.k==='h'){ ctx.fillStyle=C_PINE; ctx.fill();
+      ctx.lineWidth=2.5; ctx.strokeStyle=C_BG; ctx.stroke(); }
+    else { ctx.fillStyle=C_BG; ctx.fill();
+      ctx.lineWidth=1.7*p.s; ctx.strokeStyle=(i===act?C_PINE:C_STEEL); ctx.stroke(); }
+    if(i===act){ ctx.beginPath(); ctx.arc(p.x,p.y,r+4.5,0,7);
+      ctx.lineWidth=1; ctx.strokeStyle=C_PINE; ctx.stroke(); }
+    var show=(n.k==='h')||(act!==null&&nb[i])||(filt>=0&&on(i))||(uz>1.6&&p.s>0.95);
+    if(show&&!dim){
+      ctx.globalAlpha=fog(p.dep);
+      ctx.font=(n.k==='h'?'700 12.5px ':'500 11.5px ')+FONT;
+      ctx.textAlign='center'; ctx.textBaseline='top';
+      ctx.fillStyle=C_INK; ctx.fillText(n.l,p.x,p.y+r+4);
+    }
+    ctx.globalAlpha=1;
+  });
+}
+function loop(){ if(spin&&sel===null&&hover===null) yaw+=0.0016; draw(); requestAnimationFrame(loop); }
+
+/* ---- info panel ---- */
+var info=document.getElementById('g-info');
+function esc(s){return String(s).replace(/[<>&]/g,function(c){return{'<':'&lt;','>':'&gt;','&':'&amp;'}[c]})}
+function show(i){
+  if(i===null){ info.innerHTML='<div class="e">점을 짚거나 눌러보세요. 과업이 어떤 문제였고 무엇을 만들었는지 나옵니다.</div>'; return; }
+  var n=N[i];
+  if(n.k==='h'){
+    var c=0; N.forEach(function(m){if(m.k==='t'&&m.s===n.s)c++});
+    info.innerHTML='<h4>'+esc(n.l)+'</h4><div class="meta">일의 단계 · 연결된 과업 '+c+'건</div>'+
+      '<p>이 단계에 속한 과업들은 서로 다른 산업에서 나왔습니다. 이 점을 지우면 남은 과업들은 회사별로 흩어집니다.</p>';
+    return;
+  }
+  info.innerHTML='<h4>'+esc(n.l)+'</h4>'+
+    '<div class="meta">'+esc(n.co)+' · '+esc(STAGE[n.s])+'</div>'+
+    '<div class="bd">'+BADGE.map(function(b,k){
+      return '<b class="'+(n.bd[k]?'':'off')+'">'+b+'</b>';}).join('')+'</div>'+
+    '<p>'+esc(n.no)+'</p>';
+}
+
+/* ---- interaction ---- */
+function pick(mx,my){
+  var best=null,bd=1e9;
+  for(var i=0;i<P.length;i++){
+    if(!on(i)) continue;
+    var p=P[i],dx=p.x-mx,dy=p.y-my,d=dx*dx+dy*dy,rr=Math.pow(rad(p.n)*p.s+9,2);
+    if(d<rr&&d<bd){bd=d;best=i}
+  }
+  return best;
+}
+function pos(e){
+  var r=cv.getBoundingClientRect();
+  var t=(e.touches&&e.touches[0])||e;
+  return {x:t.clientX-r.left,y:t.clientY-r.top};
+}
+var drag=false,moved=false,lx=0,ly=0,panning=false;
+function down(e){ var p=pos(e); drag=true; moved=false; lx=p.x; ly=p.y;
+  panning=!!(e.shiftKey||e.button===1||e.button===2);
+  cv.classList.add('drag'); if(panning&&e.preventDefault) e.preventDefault(); }
+function move(e){
+  var p=pos(e);
+  if(drag){
+    var dx=p.x-lx, dy=p.y-ly;
+    if(Math.abs(dx)+Math.abs(dy)>3) moved=true;
+    if(panning){ px+=dx; py+=dy; clampPan(); }
+    else { yaw+=dx*0.006; pitch+=dy*0.005;
+      pitch=Math.max(-1.15,Math.min(1.15,pitch)); }
+    lx=p.x; ly=p.y;
+    if(e.cancelable) e.preventDefault();
+    return;
+  }
+  var h=pick(p.x,p.y);
+  if(h!==hover){ hover=h; cv.style.cursor=h!==null?'pointer':'grab'; if(sel===null) show(h); }
+}
+function up(e){
+  cv.classList.remove('drag'); panning=false;
+  if(drag&&!moved){
+    var p=pos(e.changedTouches?{touches:e.changedTouches}:e);
+    var h=pick(p.x,p.y);
+    sel=(sel===h?null:h); show(sel!==null?sel:null);
+  }
+  drag=false;
+}
+function clampPan(){
+  var lim=Math.max(0,RMAX*(F/(F-RMAX))*zoom-Math.min(W,H)*0.32);
+  px=Math.max(-lim,Math.min(lim,px)); py=Math.max(-lim,Math.min(lim,py));
+}
+function setZoom(z){ uz=Math.max(0.55,Math.min(3.4,z)); zoom=fit*uz; clampPan();
+  document.getElementById('g-zl').textContent='×'+uz.toFixed(2); }
+cv.addEventListener('wheel',function(e){
+  e.preventDefault(); setZoom(uz*Math.exp(-e.deltaY*0.0014));
+},{passive:false});
+var pd=0,pmx=0,pmy=0;
+function mid(e){return {x:(e.touches[0].clientX+e.touches[1].clientX)/2,
+                        y:(e.touches[0].clientY+e.touches[1].clientY)/2}}
+cv.addEventListener('touchstart',function(e){
+  if(e.touches.length===2){
+    pd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,
+                  e.touches[0].clientY-e.touches[1].clientY);
+    var m=mid(e); pmx=m.x; pmy=m.y;
+  }
+},{passive:true});
+cv.addEventListener('touchmove',function(e){
+  if(e.touches.length===2&&pd){
+    var d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,
+                     e.touches[0].clientY-e.touches[1].clientY);
+    var m=mid(e);
+    px+=m.x-pmx; py+=m.y-pmy; pmx=m.x; pmy=m.y;
+    setZoom(uz*(d/pd)); pd=d; drag=false;
+    if(e.cancelable) e.preventDefault();
+  }
+},{passive:false});
+cv.addEventListener('touchend',function(e){ if(e.touches.length<2) pd=0; });
+document.getElementById('g-in').addEventListener('click',function(){setZoom(uz*1.35)});
+document.getElementById('g-out').addEventListener('click',function(){setZoom(uz/1.35)});
+document.getElementById('g-rs').addEventListener('click',function(){
+  px=0; py=0; yaw=0.6; pitch=-0.28; sel=null; hover=null;
+  setZoom(W<700?1.30:2.00); show(null); });
+cv.addEventListener('contextmenu',function(e){e.preventDefault()});
+cv.addEventListener('mousedown',down);
+window.addEventListener('mousemove',move);
+window.addEventListener('mouseup',up);
+cv.addEventListener('mouseleave',function(){ if(!drag){hover=null; if(sel===null) show(null);} });
+cv.addEventListener('touchstart',down,{passive:true});
+cv.addEventListener('touchmove',move,{passive:false});
+cv.addEventListener('touchend',up);
+
+Array.prototype.slice.call(document.querySelectorAll('.grbar button')).forEach(function(b){
+  b.addEventListener('click',function(){
+    filt=parseInt(b.dataset.s,10); sel=null; hover=null; show(null);
+    Array.prototype.slice.call(document.querySelectorAll('.grbar button')).forEach(function(x){
+      x.setAttribute('aria-pressed', x===b?'true':'false'); });
+    document.getElementById('g-hint').textContent = filt<0
+      ? '끌어서 회전 · 휠로 확대 · Shift나 우클릭 끌기로 이동 · 43건'
+      : STAGE[filt]+' 단계만 표시 중 · 전체를 누르면 돌아옵니다';
+  });
+});
+
+/* 터치 기기 판별 → 안내 배너 */
+var coarse=(window.matchMedia&&window.matchMedia('(pointer:coarse)').matches)||window.innerWidth<760;
+if(coarse) document.body.classList.add('touchy');
+document.getElementById('g-nx').addEventListener('click',function(){
+  document.body.classList.remove('touchy');
+  document.getElementById('g-note').style.display='none';
+});
+window.addEventListener('resize',function(){resize()});
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches) spin=0;
+resize(); setZoom(uz); show(null); loop();
 })();
 </script>
 </body>
