@@ -29,7 +29,10 @@
   .wrap{max-width:1080px;margin:0 auto;padding:0 var(--gutter)}
 
   /* nav */
-  .nav{display:flex;justify-content:space-between;align-items:center;
+  .nav{position:sticky;top:0;z-index:60;
+    background:rgba(228,231,227,.93);backdrop-filter:saturate(150%) blur(9px);
+    -webkit-backdrop-filter:saturate(150%) blur(9px);
+    display:flex;justify-content:space-between;align-items:center;
     gap:16px;padding:20px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
   .nav .brand{font-family:var(--display);font-weight:700;font-size:14px;
     letter-spacing:-.01em;text-transform:uppercase;color:var(--ink);text-decoration:none}

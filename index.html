@@ -29,7 +29,10 @@
     word-break:keep-all;overflow-wrap:break-word}
   .wrap{max-width:1080px;margin:0 auto;padding:0 var(--gutter)}
 
-  .nav{display:flex;justify-content:space-between;align-items:center;
+  .nav{position:sticky;top:0;z-index:60;
+    background:rgba(228,231,227,.93);backdrop-filter:saturate(150%) blur(9px);
+    -webkit-backdrop-filter:saturate(150%) blur(9px);
+    display:flex;justify-content:space-between;align-items:center;
     gap:16px;padding:20px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
   .nav .brand{font-family:var(--display);font-weight:700;font-size:14px;
     letter-spacing:-.01em;text-transform:uppercase;color:var(--ink);text-decoration:none}
@@ -62,9 +65,13 @@
     border-top:1px solid var(--line);max-width:34em;text-wrap:pretty}
   .role span{display:block}
 
-  .sec{border-top:1px solid var(--line);padding:clamp(48px,8vh,88px) 0}
-  .sec-label{scroll-margin-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--steel);margin-bottom:40px}
+  .sec{border-top:2px solid var(--ink);padding:clamp(54px,9vh,96px) 0;position:relative}
+  .sec:first-of-type{border-top-width:1px;border-top-color:var(--line)}
+  .sec-label em{font-style:normal;color:var(--pine);margin-right:14px;
+    letter-spacing:.1em;font-weight:500}
+  .sec-label{scroll-margin-top:92px;font-family:var(--mono);font-size:11.5px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+    margin-bottom:40px;padding-top:2px;display:block}
   .sec-intro{max-width:40em;margin:-16px 0 46px;color:#2A312D}
 
   .route{position:relative}
@@ -213,7 +220,7 @@
   </header>
 
   <section class="sec">
-    <div class="sec-label" id="method">일하는 방식 / Method</div>
+    <div class="sec-label" id="method"><em>01</em>방법 / Method</div>
     <p class="sec-intro">도메인은 바뀝니다. 아래 다섯 가지는 바뀌지 않았습니다. 제가 기억하는 것은 특정 산업 지식이 아니라 이 다섯 가지입니다.</p>
     <div class="route">
 
@@ -225,13 +232,13 @@
 
       <article class="node">
         <span class="tag">02 · 계승</span>
-        <h2>기존 체계를 파괴하지 않고 아래에 층을 놓는다</h2>
-        <p>전환 과제가 실패하는 가장 흔한 이유는 사용자에게 새로 배우라고 요구하는 것입니다. 저는 사람이 이미 신뢰하며 쓰는 서식과 리듬을 그대로 재현하고, 그 아래에 데이터 계층을 따로 놓습니다. 학습비용은 0이 되고 자동화는 정합적인 데이터를 확보합니다. 기존 결산을 살려둔 채 별도 손익체계를 얹는 방식, 유통 시스템과 병행하는 별도 재고평가도 같은 판단이었습니다.</p>
+        <h2>기존 체계를 파괴하지 않고 비스듬히 층을 놓는다</h2>
+        <p>전환 과제가 실패하는 가장 흔한 이유는 사용자에게 새로 배우라고 요구하는 것입니다. 저는 사람이 이미 신뢰하며 쓰는 서식과 리듬을 그대로 재현하고, 그 곁에 데이터 계층을 비스듬히 따로 놓습니다. 학습비용은 0이 되고 자동화는 정합적인 데이터를 확보합니다. 기존 결산을 살려둔 채 별도 손익체계를 얹는 방식, 유통 시스템과 병행하는 별도 재고평가도 같은 판단이었습니다.</p>
       </article>
 
       <article class="node">
         <span class="tag">03 · 자기 레드팀</span>
-        <h2>완성은 도달 그림일 뿐, 누리는 대상이 아니다</h2>
+        <h2>한 번에 그리지 않고, 실패를 두텁게 쌓는다</h2>
         <p>완성된 기능을 스스로 공격해 무엇이 검증되지 않았는지 찾고, 대부분을 끈 상태로 가장 위험한 가정에만 임계값을 걸어 파일럿합니다. 전면 도입 후 미사용이 가장 비싼 실패이기 때문입니다. 같은 기준을 신규사업 검토에도 적용해 왔습니다. 여러 건의 인수·진입 검토에서 Drop 판단이 다수였고, 그 근거를 명문화하는 것을 결과물로 남겼습니다. 무엇을 시작할지보다 무엇을 접을지가 더 자주 필요한 판단이었습니다.</p>
       </article>
 
@@ -251,7 +258,7 @@
   </section>
 
   <section class="sec">
-    <div class="sec-label" id="map">과업 지도 / Map of work</div>
+    <div class="sec-label" id="map"><em>02</em>과업 지도 / Map of work</div>
     <p class="sec-intro">12년치 과업 43건을 회사가 아니라 <b>일의 단계</b>로 묶었습니다. 회사 노드는 없습니다 — 어느 조직에서 했는지는 점을 짚으면 나옵니다. 네 개의 큰 점을 지우면 이 지도는 산업별로 흩어집니다. 그 네 점이 반복된 것이고, 제가 기억하는 것입니다.</p>
 
     <div class="gr">
@@ -287,7 +294,7 @@
   </section>
 
   <section class="sec">
-    <div class="sec-label" id="theses">지금 보고 있는 것 / Current theses</div>
+    <div class="sec-label" id="theses"><em>03</em>관점 / Theses</div>
     <p class="sec-intro">현재 관심의 좌표입니다. 위의 방법을 지금 어디에 적용하고 있는지에 해당합니다.</p>
     <div class="th">
       <div>
@@ -318,14 +325,14 @@
   </section>
 
   <section class="sec">
-    <div class="sec-label" id="library">서재 / Library</div>
+    <div class="sec-label" id="library"><em>04</em>서재 / Library</div>
 
     <div class="shelf">
       <div class="shelf-h">산업 / Industry</div>
       <div class="item">
         <div class="meta">2026.08 · Essay</div>
         <div class="t"><a href="posts/figma-seats.html">누가 디자인의 배차권을 쥐는가</a></div>
-        <div class="d">AI가 명세를 말에서 산출물로 옮겼다. 그래서 디자인 도구의 좌석 수요는 줄지 않고 늘었다.</div>
+        <div class="d">AI가 명세를 말에서 산출물로 옮겼다. 그런데 디자인 도구의 좌석 수요는 줄지 않고 늘었다.</div>
       </div>
       <div class="item">
         <div class="meta">2026.08 · Essay</div>
@@ -361,7 +368,7 @@
   </section>
 
   <section class="sec">
-    <div class="sec-label" id="lab">실험실 / Lab</div>
+    <div class="sec-label" id="lab"><em>05</em>실험실 / Lab</div>
     <p class="sec-intro">글로 적은 주장은 읽고 나면 잊힙니다. 직접 해보고 손해를 보면 남습니다. 서재의 주장들을 조작 가능한 형태로 옮겨두었습니다.</p>
     <div class="th">
       <div>
@@ -376,7 +383,7 @@
   </section>
 
   <section class="sec">
-    <div class="sec-label">연결 / Contact</div>
+    <div class="sec-label"><em>06</em>연결 / Contact</div>
     <p class="lede">모빌리티, 물류, 엔터프라이즈 AI 도입에 관한 대화는 언제든 환영합니다.</p>
     <p class="sub">경력 전체는 LinkedIn에 있습니다. 이 사이트는 이력이 아니라 판단의 기록입니다.</p>
     <div class="out">
@@ -580,7 +587,7 @@ function loop(){ if(spin&&sel===null&&hover===null) yaw+=0.0016; draw(); request
 var info=document.getElementById('g-info');
 function esc(s){return String(s).replace(/[<>&]/g,function(c){return{'<':'&lt;','>':'&gt;','&':'&amp;'}[c]})}
 function show(i){
-  if(i===null){ info.innerHTML='<div class="e">점을 짚거나 눌러보세요. 과업이 어떤 문제였고 무엇을 만들었는지 나옵니다.</div>'; return; }
+  if(i===null||i===undefined){ info.innerHTML='<div class="e">점을 짚거나 눌러보세요. 과업이 어떤 문제였고 무엇을 만들었는지 나옵니다.</div>'; return; }
   var n=N[i];
   if(n.k==='h'){
     var c=0; N.forEach(function(m){if(m.k==='t'&&m.s===n.s)c++});
@@ -607,10 +614,17 @@ function pick(mx,my){
 }
 function pos(e){
   var r=cv.getBoundingClientRect();
-  var t=(e.touches&&e.touches[0])||e;
+  var t=(e.touches&&e.touches.length?e.touches[0]:null)||
+        (e.changedTouches&&e.changedTouches.length?e.changedTouches[0]:null)||e;
   return {x:t.clientX-r.left,y:t.clientY-r.top};
 }
-var drag=false,moved=false,lx=0,ly=0,panning=false;
+function tapSelect(x,y){          /* 좌표 하나로 선택 상태를 확정 */
+  var h=pick(x,y);
+  sel=(sel===h?null:h);
+  hover=null;
+  show(sel);
+}
+var drag=false,moved=false,lx=0,ly=0,panning=false,touching=0,tslack=3;
 function down(e){ var p=pos(e); drag=true; moved=false; lx=p.x; ly=p.y;
   panning=!!(e.shiftKey||e.button===1||e.button===2);
   cv.classList.add('drag'); if(panning&&e.preventDefault) e.preventDefault(); }
@@ -618,7 +632,7 @@ function move(e){
   var p=pos(e);
   if(drag){
     var dx=p.x-lx, dy=p.y-ly;
-    if(Math.abs(dx)+Math.abs(dy)>3) moved=true;
+    if(Math.abs(dx)+Math.abs(dy)>tslack) moved=true;
     if(panning){ px+=dx; py+=dy; clampPan(); }
     else { yaw+=dx*0.006; pitch+=dy*0.005;
       pitch=Math.max(-1.15,Math.min(1.15,pitch)); }
@@ -626,16 +640,13 @@ function move(e){
     if(e.cancelable) e.preventDefault();
     return;
   }
+  if(touching) return;
   var h=pick(p.x,p.y);
   if(h!==hover){ hover=h; cv.style.cursor=h!==null?'pointer':'grab'; if(sel===null) show(h); }
 }
 function up(e){
   cv.classList.remove('drag'); panning=false;
-  if(drag&&!moved){
-    var p=pos(e.changedTouches?{touches:e.changedTouches}:e);
-    var h=pick(p.x,p.y);
-    sel=(sel===h?null:h); show(sel!==null?sel:null);
-  }
+  if(drag&&!moved&&!touching){ var p=pos(e); tapSelect(p.x,p.y); }
   drag=false;
 }
 function clampPan(){
@@ -674,13 +685,25 @@ document.getElementById('g-rs').addEventListener('click',function(){
   px=0; py=0; yaw=0.6; pitch=-0.28; sel=null; hover=null;
   setZoom(W<700?1.30:2.00); show(null); });
 cv.addEventListener('contextmenu',function(e){e.preventDefault()});
-cv.addEventListener('mousedown',down);
+cv.addEventListener('mousedown',function(e){ if(touching) return; down(e); });
 window.addEventListener('mousemove',move);
 window.addEventListener('mouseup',up);
-cv.addEventListener('mouseleave',function(){ if(!drag){hover=null; if(sel===null) show(null);} });
-cv.addEventListener('touchstart',down,{passive:true});
+cv.addEventListener('mouseleave',function(){ if(!drag&&!touching){hover=null; if(sel===null) show(null);} });
+cv.addEventListener('touchstart',function(e){
+  touching=1; tslack=14;                 /* 손가락은 흔들리므로 허용치를 넓힘 */
+  if(e.touches.length===1) down(e);
+},{passive:true});
 cv.addEventListener('touchmove',move,{passive:false});
-cv.addEventListener('touchend',up);
+cv.addEventListener('touchend',function(e){
+  cv.classList.remove('drag'); panning=false;
+  if(drag&&!moved&&e.changedTouches&&e.changedTouches.length){
+    var p=pos(e); tapSelect(p.x,p.y);
+    if(e.cancelable) e.preventDefault();   /* 유령 마우스 이벤트 차단 */
+  }
+  drag=false;
+  setTimeout(function(){touching=0;tslack=3;},450);
+});
+cv.addEventListener('touchcancel',function(){drag=false;touching=0;tslack=3;});
 
 Array.prototype.slice.call(document.querySelectorAll('.grbar button')).forEach(function(b){
   b.addEventListener('click',function(){
