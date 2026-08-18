@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>누가 디자인의 배차권을 쥐는가 — Yohan Lee</title>
-<meta name="description" content="AI가 명세를 말에서 산출물로 옮겼다. 그래서 디자인 도구의 좌석 수요는 줄지 않고 늘었다. 생성 능력과 상태 소유를 구분해 읽는 글.">
+<meta name="description" content="AI가 명세를 말에서 산출물로 옮겼다. 그런데 디자인 도구의 좌석 수요는 줄지 않고 늘었다. 생성 능력과 상태 소유를 구분해 읽는 글.">
 <meta property="og:title" content="누가 디자인의 배차권을 쥐는가">
 <meta property="og:description" content="생성은 기능이고, 상태는 자산이다.">
 <meta property="og:type" content="article">
@@ -29,7 +29,10 @@
     word-break:keep-all;overflow-wrap:break-word}
   .wrap{max-width:720px;margin:0 auto;padding:0 var(--gutter)}
 
-  .nav{display:flex;justify-content:space-between;align-items:center;
+  .nav{position:sticky;top:0;z-index:60;
+    background:rgba(228,231,227,.93);backdrop-filter:saturate(150%) blur(9px);
+    -webkit-backdrop-filter:saturate(150%) blur(9px);
+    display:flex;justify-content:space-between;align-items:center;
     gap:16px;padding:20px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
   .nav .brand{font-family:var(--display);font-weight:700;font-size:14px;
     letter-spacing:-.01em;text-transform:uppercase;color:var(--ink);text-decoration:none}
